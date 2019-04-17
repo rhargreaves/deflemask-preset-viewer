@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - run:
+          name: install dependencies
+          command: |
+            make build
+      - run:
+          name: run tests
+          command: |
+            make test
