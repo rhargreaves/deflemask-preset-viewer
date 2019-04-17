@@ -6,12 +6,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: install dependencies
+          name: Install Dependencies
           command: |
             echo 'export PATH="$HOME/.local/bin:$PATH"' >> $BASH_ENV
             source $BASH_ENV
             make build
       - run:
-          name: run tests
+          name: Run Tests
           command: |
             make test
