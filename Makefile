@@ -5,7 +5,7 @@ test:
 .PHONY: test
 
 build:
-	pip3 install -r requirements.txt
+	pip3 install --user -r requirements.txt
 .PHONY: build
 
 run:
