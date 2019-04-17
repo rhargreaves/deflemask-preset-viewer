@@ -9,6 +9,7 @@ jobs:
           name: install dependencies
           command: |
             echo 'export PATH="~/.local/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
             make build
       - run:
           name: run tests
