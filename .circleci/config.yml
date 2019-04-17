@@ -8,6 +8,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
+            export PATH=~/.local/bin:$PATH
             make build
       - run:
           name: run tests
