@@ -10,3 +10,4 @@ def test_returns_details_for_test_dmp():
         ["python3", "src/main.py", "tests/sample.dmp"]).decode()
 
     assert 'FM' in stdout
+    assert 'Version 8' in stdout
