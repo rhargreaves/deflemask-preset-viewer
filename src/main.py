@@ -11,21 +11,27 @@ def read_byte(file):
     return file.read(1)[0]
 
 
+def parse_file(filename):
+    pass
+
+
 def main(args):
+    dmp_info = namedtuple("DmpInfo", "version system_type instrument_mode")
     with open(args.file, "rb") as f:
-        version = read_byte(f)
-        print("Version {}".format(version))
 
-        if version == 8:
-            instrument_mode = read_byte(f)
-            system_type = None
-        elif version == 11:
-            system_type = read_byte(f)
-            instrument_mode = read_byte(f)
+        dmp_info.version = read_byte(f)
 
-    if instrument_mode == 1:
+        if dmp_info.version == 8:
+            dmp_info.instrument_mode = read_byte(f)
+            dmp_info.system_type = None
+        elif dmp_info.version == 11:
+            dmp_info.system_type = read_byte(f)
+            dmp_info.instrument_mode = read_byte(f)
+
+    print("Version {}".format(dmp_info.version))
+    if dmp_info.instrument_mode == 1:
         print("FM")
-    if system_type == 2:
+    if dmp_info.system_type == 2:
         print("Genesis")
 
 
