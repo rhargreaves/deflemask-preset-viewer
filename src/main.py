@@ -7,6 +7,13 @@ parser.add_argument('file')
 args = parser.parse_args()
 
 
+class Dmp:
+    def __init__(self):
+        self.veversion = None
+        self.system_type = None
+        self.instrument_mode = None
+
+
 def read_byte(file):
     return file.read(1)[0]
 
@@ -16,7 +23,7 @@ def parse_file(filename):
 
 
 def main(args):
-    dmp_info = namedtuple("DmpInfo", "version system_type instrument_mode")
+    dmp_info = Dmp()
     with open(args.file, "rb") as f:
 
         dmp_info.version = read_byte(f)
