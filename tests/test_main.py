@@ -18,4 +18,5 @@ def test_returns_details_for_version_11_dmp():
         ["python3", "src/main.py", "tests/sample_new.dmp"]).decode()
 
     assert 'FM' in stdout
+    assert 'Genesis' in stdout
     assert 'Version 11' in stdout
