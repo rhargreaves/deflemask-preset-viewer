@@ -39,7 +39,7 @@ def main(args):
     if dmp.instrument_mode == 1:
         print("FM")
         if dmp.lfo is not None:
-            print("LFO 0x{:02X}".format(dmp.lfo))
+            print("LFO FMS 0x{:02X}".format(dmp.lfo))
     if dmp.system_type == 2:
         print("Genesis")
 
