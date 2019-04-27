@@ -9,7 +9,7 @@ args = parser.parse_args()
 
 class Operator:
     def __init__(self):
-
+        self.mul = None
         pass
 
 
@@ -50,8 +50,19 @@ def parse_file(filename):
 
 
 def parse_operator(f):
-    operator = Operator()
-    return operator
+    op = Operator()
+    op.mul = read_byte(f)
+    read_byte(f)
+    read_byte(f)
+    read_byte(f)
+    read_byte(f)
+    read_byte(f)
+    read_byte(f)
+    read_byte(f)
+    read_byte(f)
+    read_byte(f)
+    read_byte(f)
+    return op
 
 
 def main(args):
@@ -70,6 +81,9 @@ def main(args):
         print("Operator", end='')
         for i in range(4):
             print("\t{}".format(i+1), end='')
+        print("MUL", end='')
+        for op in dmp.operators:
+            print("\t{}".format(op.mul), end='')
 
     if dmp.system_type == 2:
         print("Genesis")
