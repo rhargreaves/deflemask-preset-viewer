@@ -22,15 +22,6 @@ def test_returns_details_for_version_11_dmp():
     assert 'Version 11' in stdout
 
 
-def op_values(name, values):
-    return '{}\t{}\t{}\t{}\t{}\n'.format(
-        name,
-        values[0],
-        values[1],
-        values[2],
-        values[3])
-
-
 def test_returns_fm_parameters():
     for f in ["tests/sample_new.dmp", "tests/sample.dmp"]:
         stdout = subprocess.check_output(
@@ -46,3 +37,12 @@ def test_returns_fm_parameters():
     assert op_values('AR', [31, 31, 31, 31]) in stdout
     assert op_values('DR', [15, 14, 9, 9]) in stdout
     assert op_values('SL', [14, 14, 14, 14]) in stdout
+
+
+def op_values(name, values):
+    return '{}\t{}\t{}\t{}\t{}\n'.format(
+        name,
+        values[0],
+        values[1],
+        values[2],
+        values[3])
