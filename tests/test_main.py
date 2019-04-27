@@ -32,6 +32,7 @@ def test_returns_fm_parameters():
     assert 'Algorithm 0x03' in stdout
     assert 'LFO AMS 0x00' in stdout
     assert 'Operator\t1\t2\t3\t4\n' in stdout
-    assert 'MUL\t14\t0\t1\t0\n' in stdout
+    assert 'MUL\t14\t1\t0\t0\n' in stdout
     assert 'TL\t39\t24\t24\t19\n' in stdout
     assert 'AR\t31\t31\t31\t31\n' in stdout
+    assert 'DR\t15\t14\t9\t9\n' in stdout

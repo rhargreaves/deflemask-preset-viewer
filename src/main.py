@@ -12,6 +12,7 @@ class Operator:
         self.mul = None
         self.tl = None
         self.ar = None
+        self.dr = None
 
 
 class Dmp:
@@ -55,7 +56,7 @@ def parse_operator(f):
     op.mul = read_byte(f)
     op.tl = read_byte(f)
     op.ar = read_byte(f)
-    read_byte(f)
+    op.dr = read_byte(f)
     read_byte(f)
     read_byte(f)
     read_byte(f)
@@ -68,7 +69,8 @@ def parse_operator(f):
 
 def print_op(name, value_func, operators):
     print(name, end='')
-    for op in operators:
+    for i in [0, 2, 1, 3]:
+        op = operators[i]
         print("\t{}".format(value_func(op)), end='')
     print()
 
@@ -93,6 +95,7 @@ def main(args):
         print_op("MUL", lambda op: op.mul, dmp.operators)
         print_op("TL", lambda op: op.tl, dmp.operators)
         print_op("AR", lambda op: op.ar, dmp.operators)
+        print_op("DR", lambda op: op.dr, dmp.operators)
     if dmp.system_type == 2:
         print("Genesis")
 
