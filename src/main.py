@@ -9,11 +9,12 @@ args = parser.parse_args()
 
 class Dmp:
     def __init__(self):
-        self.veversion = None
+        self.version = None
         self.system_type = None
         self.instrument_mode = None
         self.lfo_fms = None
         self.feedback = None
+        self.algorithm = None
 
 
 def read_byte(file):
@@ -32,6 +33,7 @@ def parse_file(filename):
         if dmp.instrument_mode == 1:
             dmp.lfo_fms = read_byte(f)
             dmp.feedback = read_byte(f)
+            dmp.algorithm = read_byte(f)
     return dmp
 
 
@@ -44,6 +46,8 @@ def main(args):
             print("LFO FMS 0x{:02X}".format(dmp.lfo_fms))
         if dmp.feedback is not None:
             print("Feedback 0x{:02X}".format(dmp.feedback))
+        if dmp.feedback is not None:
+            print("Algorithm 0x{:02X}".format(dmp.algorithm))
     if dmp.system_type == 2:
         print("Genesis")
 

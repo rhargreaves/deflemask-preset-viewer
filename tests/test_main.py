@@ -29,3 +29,4 @@ def test_returns_fm_parameters():
 
     assert 'LFO FMS 0x00' in stdout
     assert 'Feedback 0x00' in stdout
+    assert 'Algorithm 0x00' in stdout
