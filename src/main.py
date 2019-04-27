@@ -1,37 +1,13 @@
 #!/usr/bin/env python3
 import argparse
 from collections import namedtuple
+from colorama import Fore, Back, Style
+from dmp import Dmp
+from fm_operator import FmOperator
 
 parser = argparse.ArgumentParser(description='View DMP details.')
 parser.add_argument('file')
 args = parser.parse_args()
-
-
-class Operator:
-    def __init__(self):
-        self.mul = None
-        self.tl = None
-        self.ar = None
-        self.dr = None
-        self.sl = None
-        self.rr = None
-        self.am = None
-        self.rs = None
-        self.dt = None
-        self.d2r = None
-        self.ssg = None
-
-
-class Dmp:
-    def __init__(self):
-        self.version = None
-        self.system_type = None
-        self.instrument_mode = None
-        self.lfo_fms = None
-        self.lfo_ams = None
-        self.feedback = None
-        self.algorithm = None
-        self.operators = []
 
 
 def read_byte(file):
@@ -59,7 +35,7 @@ def parse_file(filename):
 
 
 def parse_operator(f):
-    op = Operator()
+    op = FmOperator()
     op.mul = read_byte(f)
     op.tl = read_byte(f)
     op.ar = read_byte(f)
