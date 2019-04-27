@@ -98,7 +98,7 @@ def format_system(system_type):
 
 
 def print_type(dmp):
-    print("Version {0: <2}      {1: <3}      {2: <7}".format(
+    print("Version  {0: <2}      {1: <3}      {2: <7}".format(
         dmp.version,
         format_instrument_mode(dmp.instrument_mode),
         format_system(dmp.system_type)))
@@ -108,10 +108,8 @@ def main(args):
     dmp = parse_file(args.file)
     print_type(dmp)
     if dmp.instrument_mode == 1:
-        print("LFO FMS {}".format(dmp.lfo_fms))
-        print("LFO AMS {}".format(dmp.lfo_ams))
-        print("Feedback {}".format(dmp.feedback))
-        print("Algorithm {}".format(dmp.algorithm))
+        print("Algorithm  {}     LFO FMS  {}".format(dmp.algorithm, dmp.lfo_fms))
+        print("Feedback   {}     LFO AMS  {}".format(dmp.feedback, dmp.lfo_ams))
         print_operator_headers()
         print_op("MUL", lambda op: op.mul, dmp.operators)
         print_op("TL", lambda op: op.tl, dmp.operators)

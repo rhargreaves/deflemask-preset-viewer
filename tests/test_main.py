@@ -10,7 +10,7 @@ def test_returns_details_for_version_8_dmp():
         ["python3", "src/main.py", "tests/sample.dmp"]).decode()
 
     assert 'FM' in stdout
-    assert 'Version 8' in stdout
+    assert 'Version  8' in stdout
 
 
 def test_returns_details_for_version_11_dmp():
@@ -19,7 +19,7 @@ def test_returns_details_for_version_11_dmp():
 
     assert 'FM' in stdout
     assert 'Genesis' in stdout
-    assert 'Version 11' in stdout
+    assert 'Version  11' in stdout
 
 
 def test_returns_fm_parameters():
@@ -27,10 +27,10 @@ def test_returns_fm_parameters():
         stdout = subprocess.check_output(
             ["python3", "src/main.py", f]).decode()
 
-    assert 'LFO FMS 0' in stdout
-    assert 'Feedback 0' in stdout
-    assert 'Algorithm 3' in stdout
-    assert 'LFO AMS 0' in stdout
+    assert 'LFO FMS  0' in stdout
+    assert 'Feedback   0' in stdout
+    assert 'Algorithm  3' in stdout
+    assert 'LFO AMS  0' in stdout
     assert op_values('Operator', [1, 2, 3, 4]) in stdout
     assert op_values('MUL', [14, 1, 0, 0]) in stdout
     assert op_values('TL', [39, 24, 24, 19]) in stdout
