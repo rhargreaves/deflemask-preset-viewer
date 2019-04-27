@@ -7,6 +7,12 @@ parser.add_argument('file')
 args = parser.parse_args()
 
 
+class Operator:
+    def __init__(self):
+
+        pass
+
+
 class Dmp:
     def __init__(self):
         self.version = None
@@ -16,6 +22,7 @@ class Dmp:
         self.lfo_ams = None
         self.feedback = None
         self.algorithm = None
+        self.operators = []
 
 
 def read_byte(file):
@@ -37,7 +44,14 @@ def parse_file(filename):
             dmp.feedback = read_byte(f)
             dmp.algorithm = read_byte(f)
             dmp.lfo_ams = read_byte(f)
+            for i in range(4):
+                dmp.operators.append(parse_operator(f))
     return dmp
+
+
+def parse_operator(f):
+    operator = Operator()
+    return operator
 
 
 def main(args):
@@ -53,6 +67,10 @@ def main(args):
             print("Feedback 0x{:02X}".format(dmp.feedback))
         if dmp.feedback is not None:
             print("Algorithm 0x{:02X}".format(dmp.algorithm))
+        print("Operator", end='')
+        for i in range(4):
+            print("\t{}".format(i+1), end='')
+
     if dmp.system_type == 2:
         print("Genesis")
 
