@@ -24,5 +24,5 @@ def print_code(dmp):
         code += opDef
         if i != 3:
             code += ", "
-    code += " }"
+    code += " };"
     print(code)
