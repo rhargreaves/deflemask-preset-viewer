@@ -10,7 +10,7 @@ def test_returns_details_for_version_8_dmp():
         ["python3", "src/main.py", "tests/sample.dmp"]).decode()
 
     assert 'FM' in stdout
-    assert 'Version  8' in stdout
+    assert 'Version    8' in stdout
 
 
 def test_returns_details_for_version_11_dmp():
@@ -19,7 +19,7 @@ def test_returns_details_for_version_11_dmp():
 
     assert 'FM' in stdout
     assert 'Genesis' in stdout
-    assert 'Version  11' in stdout
+    assert 'Version    11' in stdout
 
 
 def test_returns_fm_parameters():
