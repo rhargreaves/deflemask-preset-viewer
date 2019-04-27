@@ -12,6 +12,7 @@ class Dmp:
         self.veversion = None
         self.system_type = None
         self.instrument_mode = None
+        self.lfo = None
 
 
 def read_byte(file):
@@ -34,10 +35,14 @@ def main(args):
         elif dmp_info.version == 11:
             dmp_info.system_type = read_byte(f)
             dmp_info.instrument_mode = read_byte(f)
+            if dmp_info.instrument_mode == 1:
+                dmp_info.lfo = read_byte(f)
 
     print("Version {}".format(dmp_info.version))
     if dmp_info.instrument_mode == 1:
         print("FM")
+        if dmp_info.lfo is not None:
+            print("LFO 0x{:02X}".format(dmp_info.lfo))
     if dmp_info.system_type == 2:
         print("Genesis")
 

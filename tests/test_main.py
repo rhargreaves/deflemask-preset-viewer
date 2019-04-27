@@ -20,3 +20,10 @@ def test_returns_details_for_version_11_dmp():
     assert 'FM' in stdout
     assert 'Genesis' in stdout
     assert 'Version 11' in stdout
+
+
+def test_returns_fm_parameters_for_version_11_dmp():
+    stdout = subprocess.check_output(
+        ["python3", "src/main.py", "tests/sample_new.dmp"]).decode()
+
+    assert 'LFO 0x00' in stdout
