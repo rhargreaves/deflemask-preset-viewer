@@ -29,7 +29,7 @@ def parse_file(filename):
             dmp.system_type = read_byte(f)
             dmp.instrument_mode = read_byte(f)
         if dmp.instrument_mode == 1:
-            dmp.lfo = read_byte(f)
+            dmp.lfo_fms = read_byte(f)
     return dmp
 
 
@@ -38,8 +38,8 @@ def main(args):
     print("Version {}".format(dmp.version))
     if dmp.instrument_mode == 1:
         print("FM")
-        if dmp.lfo is not None:
-            print("LFO FMS 0x{:02X}".format(dmp.lfo))
+        if dmp.lfo_fms is not None:
+            print("LFO FMS 0x{:02X}".format(dmp.lfo_fms))
     if dmp.system_type == 2:
         print("Genesis")
 
