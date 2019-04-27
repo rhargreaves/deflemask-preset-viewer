@@ -94,14 +94,10 @@ def main(args):
     print("Version {}".format(dmp.version))
     if dmp.instrument_mode == 1:
         print("FM")
-        if dmp.lfo_fms is not None:
-            print("LFO FMS 0x{:02X}".format(dmp.lfo_fms))
-        if dmp.lfo_ams is not None:
-            print("LFO AMS 0x{:02X}".format(dmp.lfo_ams))
-        if dmp.feedback is not None:
-            print("Feedback 0x{:02X}".format(dmp.feedback))
-        if dmp.feedback is not None:
-            print("Algorithm 0x{:02X}".format(dmp.algorithm))
+        print("LFO FMS 0x{:02X}".format(dmp.lfo_fms))
+        print("LFO AMS 0x{:02X}".format(dmp.lfo_ams))
+        print("Feedback 0x{:02X}".format(dmp.feedback))
+        print("Algorithm 0x{:02X}".format(dmp.algorithm))
         print_operator_headers()
         print_op("MUL", lambda op: op.mul, dmp.operators)
         print_op("TL", lambda op: op.tl, dmp.operators)
