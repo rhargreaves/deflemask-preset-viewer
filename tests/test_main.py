@@ -34,3 +34,4 @@ def test_returns_fm_parameters():
     assert 'Operator\t1\t2\t3\t4\n' in stdout
     assert 'MUL\t14\t0\t1\t0\n' in stdout
     assert 'TL\t39\t24\t24\t19\n' in stdout
+    assert 'AR\t31\t31\t31\t31\n' in stdout

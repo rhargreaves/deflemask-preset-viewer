@@ -11,6 +11,7 @@ class Operator:
     def __init__(self):
         self.mul = None
         self.tl = None
+        self.ar = None
 
 
 class Dmp:
@@ -53,7 +54,7 @@ def parse_operator(f):
     op = Operator()
     op.mul = read_byte(f)
     op.tl = read_byte(f)
-    read_byte(f)
+    op.ar = read_byte(f)
     read_byte(f)
     read_byte(f)
     read_byte(f)
@@ -91,6 +92,7 @@ def main(args):
         print()
         print_op("MUL", lambda op: op.mul, dmp.operators)
         print_op("TL", lambda op: op.tl, dmp.operators)
+        print_op("AR", lambda op: op.ar, dmp.operators)
     if dmp.system_type == 2:
         print("Genesis")
 
