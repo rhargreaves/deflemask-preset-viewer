@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import argparse
-from colorama import Fore, Back, Style
 from parser import parse_file
 from ui import print_dmp
 
