@@ -98,7 +98,7 @@ def format_system(system_type):
 
 
 def print_type(dmp):
-    print("{0:<11}{1:<8}{2:<8}{3:<9}".format(
+    print("{0:<11}{1:<8}{2:<9}{3:<7}".format(
         "Version",
         dmp.version,
         format_instrument_mode(dmp.instrument_mode),
