@@ -4,7 +4,7 @@ Reads DMP files and displays the stored parameters
 ## Usage
 
 ```sh
-$ python3 src/main tests/sample.dmp
+$ python3 src/main.py tests/sample.dmp
 DefleMask Preset Viewer
 Version    8       FM       Unknown
 Algorithm  3       LFO FMS  0
