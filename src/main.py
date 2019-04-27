@@ -5,10 +5,6 @@ from colorama import Fore, Back, Style
 from dmp import Dmp
 from fm_operator import FmOperator
 
-parser = argparse.ArgumentParser(description='View DMP details.')
-parser.add_argument('file')
-args = parser.parse_args()
-
 
 def read_byte(file):
     return file.read(1)[0]
@@ -73,11 +69,6 @@ def format_system(system_type):
     return "Genesis" if system_type == 2 else "Unknown"
 
 
-def print_header(dmp):
-    print("DefleMask Preset Viewer")
-    print_type(dmp)
-
-
 def print_type(dmp):
     print("{0:<11}{1:<8}{2:<9}{3:<7}".format(
         "Version",
@@ -86,9 +77,13 @@ def print_type(dmp):
         format_system(dmp.system_type)))
 
 
-def main(args):
+def main():
+    print("DefleMask Preset Viewer")
+    parser = argparse.ArgumentParser(description='View DMP details.')
+    parser.add_argument('file')
+    args = parser.parse_args()
     dmp = parse_file(args.file)
-    print_header(dmp)
+    print_type(dmp)
     if dmp.instrument_mode == 1:
         print("Algorithm  {}       LFO FMS  {}".format(
             dmp.algorithm, dmp.lfo_fms))
@@ -107,4 +102,4 @@ def main(args):
         print_op("SSG", lambda op: op.ssg, dmp.operators)
 
 
-main(args)
+main()
