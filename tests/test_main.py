@@ -64,4 +64,4 @@ def test_outputs_in_midi_interface_code_format():
     stdout = subprocess.check_output(
         ["python3", "src/main.py", "tests/sample.dmp", "-c"]).decode()
 
-    assert 'static const Channel SAMPLE = {' in stdout
+    assert 'static const Channel SAMPLE = { 3, 0, 3, 0, 0, 0, 0 ' in stdout
