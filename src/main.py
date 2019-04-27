@@ -10,7 +10,7 @@ args = parser.parse_args()
 class Operator:
     def __init__(self):
         self.mul = None
-        pass
+        self.tl = None
 
 
 class Dmp:
@@ -52,7 +52,7 @@ def parse_file(filename):
 def parse_operator(f):
     op = Operator()
     op.mul = read_byte(f)
-    read_byte(f)
+    op.tl = read_byte(f)
     read_byte(f)
     read_byte(f)
     read_byte(f)
@@ -88,6 +88,7 @@ def main(args):
         for i in range(4):
             print("\t{}".format(i+1), end='')
         print_op("MUL", lambda op: op.mul, dmp.operators)
+        print_op("TL", lambda op: op.tl, dmp.operators)
     if dmp.system_type == 2:
         print("Genesis")
 
