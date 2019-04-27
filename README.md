@@ -23,6 +23,18 @@ D2R        0       0       0       0
 SSG        0       0       0       0
 ```
 
+It can also generate C code for inclusion in the [Mega Drive MIDI Interface](https://github.com/rhargreaves/mega-drive-midi-interface) project. Specify `-c` to output parameters in this way:
+
+```sh
+$ python3 src/main.py tests/sample.dmp -c
+DefleMask Preset Viewer
+static const Channel SAMPLE = { 3, 0, 3, 0, 0, 0, 0, 
+    { 14, 3, 31, 2, 15, 0, 14, 0, 15, 39 }, 
+    { 1, 3, 31, 0, 14, 0, 14, 0, 15, 24 }, 
+    { 0, 3, 31, 0, 9, 0, 14, 0, 15, 24 }, 
+    { 0, 3, 31, 0, 9, 0, 14, 0, 15, 19 } };
+```
+
 ## Supported Versions
 
 Only supports 8 and 11 versions of the DMP format.
