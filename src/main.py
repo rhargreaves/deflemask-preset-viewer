@@ -31,7 +31,6 @@ def main(args):
 
         if dmp_info.version == 8:
             dmp_info.instrument_mode = read_byte(f)
-            dmp_info.system_type = None
         elif dmp_info.version == 11:
             dmp_info.system_type = read_byte(f)
             dmp_info.instrument_mode = read_byte(f)
