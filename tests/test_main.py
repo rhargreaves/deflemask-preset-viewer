@@ -37,6 +37,7 @@ def test_returns_fm_parameters():
     assert op_values('AR', [31, 31, 31, 31]) in stdout
     assert op_values('DR', [15, 14, 9, 9]) in stdout
     assert op_values('SL', [14, 14, 14, 14]) in stdout
+    assert op_values('RR', [15, 15, 15, 15]) in stdout
 
 
 def op_values(name, values):
