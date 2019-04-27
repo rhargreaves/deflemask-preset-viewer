@@ -13,6 +13,7 @@ class Dmp:
         self.system_type = None
         self.instrument_mode = None
         self.lfo_fms = None
+        self.lfo_ams = None
         self.feedback = None
         self.algorithm = None
 
@@ -27,6 +28,7 @@ def parse_file(filename):
         dmp.version = read_byte(f)
         if dmp.version == 8:
             dmp.instrument_mode = read_byte(f)
+            read_byte(f)  # unknown
         elif dmp.version == 11:
             dmp.system_type = read_byte(f)
             dmp.instrument_mode = read_byte(f)
@@ -34,6 +36,7 @@ def parse_file(filename):
             dmp.lfo_fms = read_byte(f)
             dmp.feedback = read_byte(f)
             dmp.algorithm = read_byte(f)
+            dmp.lfo_ams = read_byte(f)
     return dmp
 
 
@@ -44,6 +47,8 @@ def main(args):
         print("FM")
         if dmp.lfo_fms is not None:
             print("LFO FMS 0x{:02X}".format(dmp.lfo_fms))
+        if dmp.lfo_ams is not None:
+            print("LFO AMS 0x{:02X}".format(dmp.lfo_ams))
         if dmp.feedback is not None:
             print("Feedback 0x{:02X}".format(dmp.feedback))
         if dmp.feedback is not None:
