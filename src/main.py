@@ -65,6 +65,12 @@ def parse_operator(f):
     return op
 
 
+def print_op(name, value_func, operators):
+    print(name, end='')
+    for op in operators:
+        print("\t{}".format(value_func(op)), end='')
+
+
 def main(args):
     dmp = parse_file(args.file)
     print("Version {}".format(dmp.version))
@@ -81,10 +87,7 @@ def main(args):
         print("Operator", end='')
         for i in range(4):
             print("\t{}".format(i+1), end='')
-        print("MUL", end='')
-        for op in dmp.operators:
-            print("\t{}".format(op.mul), end='')
-
+        print_op("MUL", lambda op: op.mul, dmp.operators)
     if dmp.system_type == 2:
         print("Genesis")
 
