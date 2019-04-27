@@ -27,10 +27,10 @@ def test_returns_fm_parameters():
         stdout = subprocess.check_output(
             ["python3", "src/main.py", f]).decode()
 
-    assert 'LFO FMS 0x00' in stdout
-    assert 'Feedback 0x00' in stdout
-    assert 'Algorithm 0x03' in stdout
-    assert 'LFO AMS 0x00' in stdout
+    assert 'LFO FMS 0' in stdout
+    assert 'Feedback 0' in stdout
+    assert 'Algorithm 3' in stdout
+    assert 'LFO AMS 0' in stdout
     assert op_values('Operator', [1, 2, 3, 4]) in stdout
     assert op_values('MUL', [14, 1, 0, 0]) in stdout
     assert op_values('TL', [39, 24, 24, 19]) in stdout
