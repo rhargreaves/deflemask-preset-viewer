@@ -58,3 +58,10 @@ def op_values(name, values):
         values[1],
         values[2],
         values[3])
+
+
+def test_outputs_in_midi_interface_code_format():
+    stdout = subprocess.check_output(
+        ["python3", "src/main.py", "tests/sample.dmp", "-c"]).decode()
+
+    assert 'static const Channel SAMPLE = {' in stdout
