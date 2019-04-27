@@ -41,8 +41,8 @@ def test_returns_fm_parameters():
     assert 'Algorithm 0x03' in stdout
     assert 'LFO AMS 0x00' in stdout
     assert op_values('Operator', [1, 2, 3, 4]) in stdout
-    assert 'MUL\t14\t1\t0\t0\n' in stdout
-    assert 'TL\t39\t24\t24\t19\n' in stdout
-    assert 'AR\t31\t31\t31\t31\n' in stdout
-    assert 'DR\t15\t14\t9\t9\n' in stdout
-    assert 'SL\t14\t14\t14\t14\n' in stdout
+    assert op_values('MUL', [14, 1, 0, 0]) in stdout
+    assert op_values('TL', [39, 24, 24, 19]) in stdout
+    assert op_values('AR', [31, 31, 31, 31]) in stdout
+    assert op_values('DR', [15, 14, 9, 9]) in stdout
+    assert op_values('SL', [14, 14, 14, 14]) in stdout
