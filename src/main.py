@@ -98,7 +98,7 @@ def format_system(system_type):
 
 
 def print_type(dmp):
-    print("Version {}      {}      {}".format(
+    print("Version {0: <2}      {1}      {2}".format(
         dmp.version,
         format_instrument_mode(dmp.instrument_mode),
         format_system(dmp.system_type)))
