@@ -27,3 +27,10 @@ def test_returns_fm_parameters_for_version_11_dmp():
         ["python3", "src/main.py", "tests/sample_new.dmp"]).decode()
 
     assert 'LFO 0x00' in stdout
+
+
+def test_returns_fm_parameters_for_version_8_dmp():
+    stdout = subprocess.check_output(
+        ["python3", "src/main.py", "tests/sample.dmp"]).decode()
+
+    assert 'LFO 0x00' in stdout
