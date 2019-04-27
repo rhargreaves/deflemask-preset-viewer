@@ -15,6 +15,11 @@ class Operator:
         self.dr = None
         self.sl = None
         self.rr = None
+        self.am = None
+        self.rs = None
+        self.dt = None
+        self.d2r = None
+        self.ssg = None
 
 
 class Dmp:
@@ -61,11 +66,11 @@ def parse_operator(f):
     op.dr = read_byte(f)
     op.sl = read_byte(f)
     op.rr = read_byte(f)
-    read_byte(f)
-    read_byte(f)
-    read_byte(f)
-    read_byte(f)
-    read_byte(f)
+    op.am = read_byte(f)
+    op.rs = read_byte(f)
+    op.dt = read_byte(f)
+    op.d2r = read_byte(f)
+    op.ssg = read_byte(f)
     return op
 
 
@@ -104,6 +109,11 @@ def main(args):
         print_op("DR", lambda op: op.dr, dmp.operators)
         print_op("SL", lambda op: op.sl, dmp.operators)
         print_op("RR", lambda op: op.rr, dmp.operators)
+        print_op("AM", lambda op: op.am, dmp.operators)
+        print_op("RS", lambda op: op.rs, dmp.operators)
+        print_op("DT", lambda op: op.dt, dmp.operators)
+        print_op("D2R", lambda op: op.d2r, dmp.operators)
+        print_op("SSG", lambda op: op.ssg, dmp.operators)
     if dmp.system_type == 2:
         print("Genesis")
 
