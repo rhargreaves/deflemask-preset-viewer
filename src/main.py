@@ -89,11 +89,25 @@ def print_operator_headers():
     print()
 
 
+def format_instrument_mode(mode):
+    return "FM " if mode == 1 else "STD"
+
+
+def format_system(system_type):
+    return "Genesis" if system_type == 2 else "Unknown"
+
+
+def print_type(dmp):
+    print("Version {}      {}      {}".format(
+        dmp.version,
+        format_instrument_mode(dmp.instrument_mode),
+        format_system(dmp.system_type)))
+
+
 def main(args):
     dmp = parse_file(args.file)
-    print("Version {}".format(dmp.version))
+    print_type(dmp)
     if dmp.instrument_mode == 1:
-        print("FM")
         print("LFO FMS {}".format(dmp.lfo_fms))
         print("LFO AMS {}".format(dmp.lfo_ams))
         print("Feedback {}".format(dmp.feedback))
@@ -110,8 +124,6 @@ def main(args):
         print_op("DT", lambda op: op.dt, dmp.operators)
         print_op("D2R", lambda op: op.d2r, dmp.operators)
         print_op("SSG", lambda op: op.ssg, dmp.operators)
-    if dmp.system_type == 2:
-        print("Genesis")
 
 
 main(args)
