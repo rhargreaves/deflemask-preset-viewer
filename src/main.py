@@ -75,6 +75,13 @@ def print_op(name, value_func, operators):
     print()
 
 
+def print_operator_headers():
+    print("Operator", end='')
+    for i in range(4):
+        print("\t{}".format(i+1), end='')
+    print()
+
+
 def main(args):
     dmp = parse_file(args.file)
     print("Version {}".format(dmp.version))
@@ -88,10 +95,7 @@ def main(args):
             print("Feedback 0x{:02X}".format(dmp.feedback))
         if dmp.feedback is not None:
             print("Algorithm 0x{:02X}".format(dmp.algorithm))
-        print("Operator", end='')
-        for i in range(4):
-            print("\t{}".format(i+1), end='')
-        print()
+        print_operator_headers()
         print_op("MUL", lambda op: op.mul, dmp.operators)
         print_op("TL", lambda op: op.tl, dmp.operators)
         print_op("AR", lambda op: op.ar, dmp.operators)
