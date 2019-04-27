@@ -6,7 +6,6 @@ from code import print_code
 
 
 def main():
-    print("DefleMask Preset Viewer")
     parser = argparse.ArgumentParser(description='View DMP details.')
     parser.add_argument('file')
     parser.add_argument(
