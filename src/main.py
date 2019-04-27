@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import argparse
 from collections import namedtuple
 
@@ -69,6 +69,7 @@ def print_op(name, value_func, operators):
     print(name, end='')
     for op in operators:
         print("\t{}".format(value_func(op)), end='')
+    print()
 
 
 def main(args):
@@ -87,6 +88,7 @@ def main(args):
         print("Operator", end='')
         for i in range(4):
             print("\t{}".format(i+1), end='')
+        print()
         print_op("MUL", lambda op: op.mul, dmp.operators)
         print_op("TL", lambda op: op.tl, dmp.operators)
     if dmp.system_type == 2:
