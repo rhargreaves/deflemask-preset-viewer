@@ -5,6 +5,13 @@ def test_returns_non_zero():
     subprocess.check_call(["python3", "src/main.py", "-h"])
 
 
+def test_prints_header():
+    stdout = subprocess.check_output(
+        ["python3", "src/main.py", "tests/sample.dmp"]).decode()
+
+    assert 'DefleMask Preset Viewer' in stdout
+
+
 def test_returns_details_for_version_8_dmp():
     stdout = subprocess.check_output(
         ["python3", "src/main.py", "tests/sample.dmp"]).decode()

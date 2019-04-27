@@ -97,6 +97,11 @@ def format_system(system_type):
     return "Genesis" if system_type == 2 else "Unknown"
 
 
+def print_header(dmp):
+    print("DefleMask Preset Viewer")
+    print_type(dmp)
+
+
 def print_type(dmp):
     print("{0:<11}{1:<8}{2:<9}{3:<7}".format(
         "Version",
@@ -107,7 +112,7 @@ def print_type(dmp):
 
 def main(args):
     dmp = parse_file(args.file)
-    print_type(dmp)
+    print_header(dmp)
     if dmp.instrument_mode == 1:
         print("Algorithm  {}       LFO FMS  {}".format(
             dmp.algorithm, dmp.lfo_fms))
