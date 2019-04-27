@@ -90,7 +90,7 @@ def print_operator_headers():
 
 
 def format_instrument_mode(mode):
-    return "FM " if mode == 1 else "STD"
+    return "FM" if mode == 1 else "STD"
 
 
 def format_system(system_type):
@@ -98,7 +98,7 @@ def format_system(system_type):
 
 
 def print_type(dmp):
-    print("Version {0: <2}      {1}      {2}".format(
+    print("Version {0: <2}      {1: <3}      {2: <7}".format(
         dmp.version,
         format_instrument_mode(dmp.instrument_mode),
         format_system(dmp.system_type)))
