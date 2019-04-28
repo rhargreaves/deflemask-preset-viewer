@@ -57,4 +57,4 @@ def test_outputs_in_midi_interface_code_format():
     stdout = subprocess.check_output(
         ["python3", "src/main.py", "tests/sample.dmp", "-c"]).decode()
 
-    assert stdout == 'static const Channel SAMPLE = { 3, 0, 3, 0, 0, 0, 0, { 14, 3, 31, 2, 15, 0, 14, 0, 15, 39 }, { 1, 3, 31, 0, 14, 0, 14, 0, 15, 24 }, { 0, 3, 31, 0, 9, 0, 14, 0, 15, 24 }, { 0, 3, 31, 0, 9, 0, 14, 0, 15, 19 } };\n'
+    assert stdout == 'static const Channel SAMPLE = { 3, 0, 3, 0, 0, 0, 0, { { 14, 3, 31, 2, 15, 0, 14, 0, 15, 39 }, { 1, 3, 31, 0, 14, 0, 14, 0, 15, 24 }, { 0, 3, 31, 0, 9, 0, 14, 0, 15, 24 }, { 0, 3, 31, 0, 9, 0, 14, 0, 15, 19 } } };\n'

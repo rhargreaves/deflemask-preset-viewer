@@ -8,7 +8,7 @@ def const_name(filename):
 def print_code(dmp, filename):
     STEREO_L_R = 3
 
-    code = "static const Channel {name} = {{ {alg}, {fb}, {stereo}, {ams}, {fms}, {octave}, {freq}, ".format(
+    code = "static const Channel {name} = {{ {alg}, {fb}, {stereo}, {ams}, {fms}, {octave}, {freq}, {{ ".format(
         alg=dmp.algorithm,
         fb=dmp.feedback,
         stereo=STEREO_L_R,
@@ -34,5 +34,5 @@ def print_code(dmp, filename):
         code += opDef
         if i != 3:
             code += ", "
-    code += " };"
+    code += " } };"
     print(code)
