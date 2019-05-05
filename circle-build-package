@@ -17,5 +17,5 @@ echo "[pypi-private]" >> ~/.pypirc
 echo "repository=https://$PYPI_HOST" >> ~/.pypirc
 echo "username=$PYPI_USERNAME" >> ~/.pypirc
 echo "password=$PYPI_PASSWORD" >> ~/.pypirc
-
-python3 setup.py sdist upload -r pypi-private
+python3 setup.py sdist bdist_wheel
+python3 -m twine upload -r pypi-private
