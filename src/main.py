@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import argparse
-from parser import parse_file
-from ui import print_dmp
-from code import print_code
+from .parser import parse_file
+from .ui import print_dmp
+from .code import print_code
 
 
 def main():

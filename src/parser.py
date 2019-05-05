@@ -1,5 +1,5 @@
-from dmp import Dmp
-from fm_operator import FmOperator
+from .dmp import Dmp
+from .fm_operator import FmOperator
 
 
 def read_byte(file):
