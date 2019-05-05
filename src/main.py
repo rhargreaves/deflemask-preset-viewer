@@ -23,6 +23,3 @@ def parse_args():
         help="Output as C code for the Mega Drive MIDI Interface project",
         action='store_true')
     return parser.parse_args()
-
-
-main()

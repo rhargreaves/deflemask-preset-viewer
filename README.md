@@ -4,7 +4,7 @@ Reads DMP files and displays the stored parameters
 ## Usage
 
 ```sh
-$ python3 src/main.py tests/sample.dmp
+$ python3 -m src tests/sample.dmp
 Version    8       FM       Unknown
 Algorithm  3       LFO FMS  0
 Feedback   0       LFO AMS  0
@@ -25,7 +25,7 @@ SSG        0       0       0       0
 It can also generate C code for inclusion in the [Mega Drive MIDI Interface](https://github.com/rhargreaves/mega-drive-midi-interface) project. Specify `-c` to output parameters in this way:
 
 ```sh
-$ python3 src/main.py tests/sample.dmp -c
+$ python3 -m src tests/sample.dmp -c
 static const Channel SAMPLE = { 3, 0, 3, 0, 0, 0, 0, 
     { 14, 3, 31, 2, 15, 0, 14, 0, 15, 39 }, 
     { 1, 3, 31, 0, 14, 0, 14, 0, 15, 24 }, 
