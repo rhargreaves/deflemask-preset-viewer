@@ -15,3 +15,7 @@ jobs:
           name: Run Tests
           command: |
             make test
+      - run:
+          name: Upload to PyPi
+          command: |
+            ./circle-build-package

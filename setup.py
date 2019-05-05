@@ -5,14 +5,14 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="deflemask-preset-viewer",
-    version="0.0.2",
+    version="0.0.5",
     author="Robert Hargreaves",
     author_email="python-package@roberthargreaves.net",
     description="Reads and outputs FM parameters contained within DefleMask's DMP files",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/rhargreaves/deflemask-preset-viewer",
-    packages=setuptools.find_packages(),
+    packages=["src"],
     entry_points={
         "console_scripts": ['deflemask-preset-viewer = src.main:main']
     },
