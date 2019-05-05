@@ -1,4 +1,4 @@
-# DefleMask Preset Viewer [![CircleCI](https://circleci.com/gh/rhargreaves/deflemask-preset-viewer.svg?style=svg)](https://circleci.com/gh/rhargreaves/deflemask-preset-viewer)
+# DefleMask Preset Viewer [![CircleCI](https://circleci.com/gh/rhargreaves/deflemask-preset-viewer.svg?style=svg)](https://circleci.com/gh/rhargreaves/deflemask-preset-viewer) [![PyPI version](https://badge.fury.io/py/deflemask-preset-viewer.svg)](https://badge.fury.io/py/deflemask-preset-viewer)
 Reads DMP files and displays the stored parameters
 
 ## Installation
