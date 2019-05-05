@@ -19,6 +19,7 @@ jobs:
     docker:
       - image: circleci/python:3.7
     steps:
+      - checkout
       - run:
           name: Upload to PyPi
           command: |
