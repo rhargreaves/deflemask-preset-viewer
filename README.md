@@ -1,4 +1,5 @@
 # DefleMask Preset Viewer [![CircleCI](https://circleci.com/gh/rhargreaves/deflemask-preset-viewer.svg?style=svg)](https://circleci.com/gh/rhargreaves/deflemask-preset-viewer) [![PyPI version](https://badge.fury.io/py/deflemask-preset-viewer.svg)](https://badge.fury.io/py/deflemask-preset-viewer)
+
 Reads DMP files and displays the stored parameters
 
 ## Installation
@@ -32,11 +33,11 @@ It can also generate C code for inclusion in the [Mega Drive MIDI Interface](htt
 
 ```sh
 $ deflemask-preset-viewer tests/sample.dmp -c
-static const Channel SAMPLE = { 3, 0, 3, 0, 0, 0, 0, 
-    { 14, 3, 31, 2, 15, 0, 14, 0, 15, 39 }, 
-    { 1, 3, 31, 0, 14, 0, 14, 0, 15, 24 }, 
-    { 0, 3, 31, 0, 9, 0, 14, 0, 15, 24 }, 
-    { 0, 3, 31, 0, 9, 0, 14, 0, 15, 19 } };
+static const Channel SAMPLE = { 3, 0, 3, 0, 0, 0, 0,
+    { 14, 3, 31, 2, 15, 0, 14, 0, 15, 39, 0 },
+    { 1, 3, 31, 0, 14, 0, 14, 0, 15, 24, 0 },
+    { 0, 3, 31, 0, 9, 0, 14, 0, 15, 24, 0 },
+    { 0, 3, 31, 0, 9, 0, 14, 0, 15, 19, 0 } };
 ```
 
 ## Supported Versions
