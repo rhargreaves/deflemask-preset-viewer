@@ -16,7 +16,7 @@ def print_code(dmp):
         fms=dmp.lfo_fms,
         octave=0,
         freq=0,
-        name=const_name(dmp.filename)
+        name=const_name(dmp.name)
     )
     for i in [0, 2, 1, 3]:
         op = dmp.operators[i]
