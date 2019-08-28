@@ -20,7 +20,7 @@ def print_code(dmp, filename):
     )
     for i in [0, 2, 1, 3]:
         op = dmp.operators[i]
-        opDef = "{{ {mul}, {detune}, {ar}, {rs}, {dr}, {am}, {sa}, {d2r}, {rr}, {tl} }}".format(
+        opDef = "{{ {mul}, {detune}, {ar}, {rs}, {dr}, {am}, {sa}, {d2r}, {rr}, {tl}, {ssg} }}".format(
             mul=op.mul,
             detune=op.dt,
             ar=op.ar,
@@ -30,7 +30,8 @@ def print_code(dmp, filename):
             sa=op.sl,
             d2r=op.d2r,
             rr=op.rr,
-            tl=op.tl)
+            tl=op.tl,
+            ssg=op.ssg)
         code += opDef
         if i != 3:
             code += ", "
