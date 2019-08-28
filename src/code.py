@@ -5,7 +5,7 @@ def const_name(filename):
     return os.path.splitext(os.path.basename(filename))[0].upper().replace(' ', '_')
 
 
-def print_code(dmp, filename):
+def print_code(dmp):
     STEREO_L_R = 3
 
     code = "static const Channel {name} = {{ {alg}, {fb}, {stereo}, {ams}, {fms}, {octave}, {freq}, {{ ".format(
@@ -16,7 +16,7 @@ def print_code(dmp, filename):
         fms=dmp.lfo_fms,
         octave=0,
         freq=0,
-        name=const_name(filename)
+        name=const_name(dmp.filename)
     )
     for i in [0, 2, 1, 3]:
         op = dmp.operators[i]

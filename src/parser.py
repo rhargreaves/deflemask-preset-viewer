@@ -9,6 +9,7 @@ def read_byte(file):
 def parse_file(filename):
     dmp = Dmp()
     with open(filename, "rb") as f:
+        dmp.filename = filename
         dmp.version = read_byte(f)
         if dmp.version == 8:
             dmp.instrument_mode = read_byte(f)

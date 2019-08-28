@@ -9,7 +9,7 @@ def main():
     args = parse_args()
     dmp = parse_file(args.file)
     if args.c_code:
-        print_code(dmp, args.file)
+        print_code(dmp)
     else:
         print_dmp(dmp)
 
