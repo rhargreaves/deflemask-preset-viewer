@@ -1,17 +1,21 @@
 #!/usr/bin/env python3
 import argparse
 from .parser import parse_file
+from .wopn_parser import parse_wopn
 from .ui import print_dmp
 from .code import print_code
 
 
 def main():
     args = parse_args()
-    dmp = parse_file(args.file)
-    if args.c_code:
-        print_code(dmp)
+    if args.file.lower().endswith('.wopn'):
+        preset = parse_wopn(args.file)
     else:
-        print_dmp(dmp)
+        preset = parse_file(args.file)
+    if args.c_code:
+        print_code(preset)
+    else:
+        print_dmp(preset)
 
 
 def parse_args():
