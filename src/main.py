@@ -2,7 +2,6 @@
 import argparse
 from .parser import parse_file
 from .wopn_parser import parse_wopn
-from .ui import print_dmp
 from .code import print_code
 
 
@@ -15,7 +14,7 @@ def main():
     if args.c_code:
         print_code(preset)
     else:
-        print_dmp(preset)
+        print(preset.info())
 
 
 def parse_args():
