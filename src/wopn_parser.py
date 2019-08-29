@@ -7,7 +7,7 @@ def parse_wopn(filename):
         p.name = filename
         p.magic_number = read_magic_number(f)
         if p.magic_number == 'WOPN2-B2NK':
-            p.version = 2
+            p.version = int.from_bytes(f.read(2), byteorder='little')
         else:
             p.version = 1
     return p
