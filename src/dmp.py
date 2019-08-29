@@ -8,7 +8,7 @@ class Dmp(Preset):
         self.system_type = None
         self.instrument_mode = None
 
-    def info(self):
+    def print_info(self):
         self.print_type()
         if self.instrument_mode == 1:
             print("Algorithm  {}       LFO FMS  {}".format(

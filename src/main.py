@@ -14,7 +14,7 @@ def main():
     if args.c_code:
         print_code(preset)
     else:
-        print(preset.info())
+        preset.print_info()
 
 
 def parse_args():
