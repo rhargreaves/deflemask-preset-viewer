@@ -1,3 +1,5 @@
+from .wopn import Wopn
+
 
 def print_op(name, value_func, operators):
     print("{0:<11}".format(name), end='')
@@ -31,20 +33,24 @@ def print_type(dmp):
 
 
 def print_dmp(dmp):
-    print_type(dmp)
-    if dmp.instrument_mode == 1:
-        print("Algorithm  {}       LFO FMS  {}".format(
-            dmp.algorithm, dmp.lfo_fms))
-        print("Feedback   {}       LFO AMS  {}".format(dmp.feedback, dmp.lfo_ams))
-        print_operator_headers()
-        print_op("MUL", lambda op: op.mul, dmp.operators)
-        print_op("TL", lambda op: op.tl, dmp.operators)
-        print_op("AR", lambda op: op.ar, dmp.operators)
-        print_op("DR", lambda op: op.dr, dmp.operators)
-        print_op("SL", lambda op: op.sl, dmp.operators)
-        print_op("RR", lambda op: op.rr, dmp.operators)
-        print_op("AM", lambda op: op.am, dmp.operators)
-        print_op("RS", lambda op: op.rs, dmp.operators)
-        print_op("DT", lambda op: op.dt, dmp.operators)
-        print_op("D2R", lambda op: op.d2r, dmp.operators)
-        print_op("SSG", lambda op: op.ssg, dmp.operators)
+    if isinstance(dmp, Wopn):
+        print(dmp.info())
+    else:
+        print_type(dmp)
+        if dmp.instrument_mode == 1:
+            print("Algorithm  {}       LFO FMS  {}".format(
+                dmp.algorithm, dmp.lfo_fms))
+            print("Feedback   {}       LFO AMS  {}".format(
+                dmp.feedback, dmp.lfo_ams))
+            print_operator_headers()
+            print_op("MUL", lambda op: op.mul, dmp.operators)
+            print_op("TL", lambda op: op.tl, dmp.operators)
+            print_op("AR", lambda op: op.ar, dmp.operators)
+            print_op("DR", lambda op: op.dr, dmp.operators)
+            print_op("SL", lambda op: op.sl, dmp.operators)
+            print_op("RR", lambda op: op.rr, dmp.operators)
+            print_op("AM", lambda op: op.am, dmp.operators)
+            print_op("RS", lambda op: op.rs, dmp.operators)
+            print_op("DT", lambda op: op.dt, dmp.operators)
+            print_op("D2R", lambda op: op.d2r, dmp.operators)
+            print_op("SSG", lambda op: op.ssg, dmp.operators)

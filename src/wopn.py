@@ -6,3 +6,6 @@ class Wopn(Preset):
         Preset.__init__(self)
         self.magic_number = None
         self.version = None
+
+    def info(self):
+        print("WOPN")

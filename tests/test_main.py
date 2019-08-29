@@ -6,7 +6,7 @@ def test_returns_non_zero():
     subprocess.check_call(["python3", "-m", "src", "-h"])
 
 
-@pytest.mark.skip(reason="WIP")
+# @pytest.mark.skip(reason="WIP")
 def test_returns_details_for_wopn():
     stdout = subprocess.check_output(
         ["python3", "-m", "src", "tests/sample.wopn"]).decode()
