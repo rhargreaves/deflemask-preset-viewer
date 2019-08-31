@@ -32,12 +32,16 @@ class Wopn():
             '    ' + bank.name + '\n'
         text = text + self.generate_line('=')
         for instrument_index, instrument in enumerate(bank.instruments):
-            text = text + self.generate_line('-')
-            text = text + 'Instrument' + \
-                "{0:>5}".format(instrument_index) + \
-                '    ' + instrument.name + '\n'
-            text = text + self.generate_line('-')
-            text = text + instrument.info()
+            text = text + self.instrument_info(instrument, instrument_index)
+        return text
+
+    def instrument_info(self, instrument, instrument_index):
+        text = self.generate_line('-')
+        text = text + 'Instrument' + \
+            "{0:>5}".format(instrument_index) + \
+            '    ' + instrument.name + '\n'
+        text = text + self.generate_line('-')
+        text = text + instrument.info()
         return text
 
 
