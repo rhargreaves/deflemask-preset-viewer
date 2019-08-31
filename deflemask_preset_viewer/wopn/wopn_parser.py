@@ -1,4 +1,5 @@
 from .wopn import Wopn, WopnBank, WopnInstrument
+from ..fm_operator import FmOperator
 
 
 def parse_wopn(filename):
@@ -45,10 +46,28 @@ def read_instrument(f):
         f.read(1), byteorder='big', signed=False)
     instrument.lfo_ams = stereo_lfo_reg >> 3
     instrument.lfo_fms = stereo_lfo_reg & 0x7
+    for i in range(4):
+        instrument.operators.append(read_operator(f))
 
-    f.read(7 * 4)  # ops
     f.read(4)  # delay
     return instrument
+
+
+def read_operator(f):
+    f.read(7)  # ops
+    op = FmOperator()
+    op.mul = -1
+    op.tl = -1
+    op.ar = -1
+    op.dr = -1
+    op.sl = -1
+    op.rr = -1
+    op.am = -1
+    op.rs = -1
+    op.dt = -1
+    op.d2r = -1
+    op.ssg = -1
+    return op
 
 
 def read_banks(bank_count, f):
