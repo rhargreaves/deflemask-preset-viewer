@@ -7,6 +7,8 @@ class Wopn():
         self.version = None
         self.m_banks = None
         self.p_banks = None
+        self.lfo_enable = None
+        self.lfo_freq = None
 
     def info(self):
         text = 'WOPN\n'

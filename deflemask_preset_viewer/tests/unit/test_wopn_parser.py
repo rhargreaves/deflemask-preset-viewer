@@ -29,7 +29,8 @@ def test_parses_number_of_percussion_instruments():
 def test_parses_global_flags():
     wopn = parse_wopn(SAMPLE_WOPN)
 
-    assert wopn.global_flags == 9
+    assert wopn.lfo_enable == True
+    assert wopn.lfo_freq == 1
 
 
 def test_parses_melodic_banks():
