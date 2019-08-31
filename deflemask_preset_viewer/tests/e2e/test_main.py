@@ -51,8 +51,8 @@ def test_returns_fm_parameters():
     assert op_values('MUL', [14, 1, 0, 0]) in stdout
     assert op_values('TL', [39, 24, 24, 19]) in stdout
     assert op_values('AR', [31, 31, 31, 31]) in stdout
-    assert op_values('DR', [15, 14, 9, 9]) in stdout
-    assert op_values('SL', [14, 14, 14, 14]) in stdout
+    assert op_values('D1R', [15, 14, 9, 9]) in stdout
+    assert op_values('D1L', [14, 14, 14, 14]) in stdout
     assert op_values('RR', [15, 15, 15, 15]) in stdout
     assert op_values('AM', [0, 0, 0, 0]) in stdout
     assert op_values('RS', [2, 0, 0, 0]) in stdout
