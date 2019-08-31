@@ -39,7 +39,7 @@ def read_instrument(f):
         f.read(1), byteorder='big', signed=False)
     feedback_algorithm_reg = int.from_bytes(
         f.read(1), byteorder='big', signed=False)
-    instrument.algorithm = (feedback_algorithm_reg << 5) >> 5
+    instrument.algorithm = feedback_algorithm_reg & 0x7
     instrument.feedback = feedback_algorithm_reg >> 3
     stereo_lfo_reg = int.from_bytes(
         f.read(1), byteorder='big', signed=False)
