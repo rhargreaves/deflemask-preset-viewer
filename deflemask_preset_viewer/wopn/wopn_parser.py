@@ -48,9 +48,12 @@ def read_instrument(f):
     instrument.lfo_fms = stereo_lfo_reg & 0x7
     for i in range(4):
         instrument.operators.append(read_operator(f))
-
-    f.read(4)  # delay
+    skip_over_delay_data(f)
     return instrument
+
+
+def skip_over_delay_data(f):
+    f.read(4)
 
 
 def read_operator(f):
