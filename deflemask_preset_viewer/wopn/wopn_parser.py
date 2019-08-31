@@ -1,5 +1,4 @@
-from .wopn import Wopn
-from collections import namedtuple
+from .wopn import Wopn, WopnBank, WponInstrument
 
 
 def parse_wopn(filename):
@@ -20,7 +19,31 @@ def parse_wopn(filename):
         if p.version >= 2:
             p.m_banks = read_banks(p.m_bank_count, f)
             p.p_banks = read_banks(p.p_bank_count, f)
+        for bank in p.m_banks:
+            for _ in range(128):
+                bank.instruments.append(read_instrument(f))
+        for bank in p.p_banks:
+            for _ in range(128):
+                bank.instruments.append(read_instrument(f))
     return p
+
+
+def read_instrument(f):
+    instrument = WponInstrument()
+    instrument.name = f.read(32).decode('ascii').rstrip('\0')
+    instrument.key_offset = int.from_bytes(
+        f.read(2), byteorder='big', signed=True)
+    instrument.percussion_key = int.from_bytes(
+        f.read(1), byteorder='big', signed=True)
+    feedback_algorithm_reg = int.from_bytes(
+        f.read(1), byteorder='big', signed=True)
+    instrument.algorithm = (feedback_algorithm_reg << 5) >> 5
+    instrument.feedback = feedback_algorithm_reg >> 3
+    lfo_reg = int.from_bytes(
+        f.read(1), byteorder='big', signed=True)
+    f.read(7 * 4)  # ops
+    f.read(4)  # delay
+    return instrument
 
 
 def read_banks(bank_count, f):
@@ -29,8 +52,7 @@ def read_banks(bank_count, f):
         bank_name = f.read(32).decode('ascii').rstrip('\0')
         bank_index = int.from_bytes(
             f.read(2), byteorder='big', signed=False)
-        Bank = namedtuple('Bank', 'name index')
-        banks.append(Bank(bank_name, bank_index))
+        banks.append(WopnBank(bank_name, bank_index))
     return banks
 
 

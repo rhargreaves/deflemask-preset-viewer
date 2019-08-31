@@ -44,3 +44,25 @@ def test_parses_percussion_banks():
 
     for bank in wopn.p_banks:
         assert bank.name != ''
+
+
+def test_parses_instruments_in_melodic_banks():
+    wopn = parse_wopn(SAMPLE_WOPN)
+
+    for bank in wopn.m_banks:
+        assert len(bank.instruments) == 128
+        for i, instrument in enumerate(bank.instruments):
+
+            assert instrument.name != None, "name of instrument %r is None" % i
+            assert instrument.algorithm != None, "algorithm of instument %r is None" % i
+
+
+def test_parses_instruments_in_percussion_banks():
+    wopn = parse_wopn(SAMPLE_WOPN)
+
+    for bank in wopn.p_banks:
+        assert len(bank.instruments) == 128
+        for i, instrument in enumerate(bank.instruments):
+
+            assert instrument.name != None, "name of instrument %r is None" % i
+            assert instrument.algorithm != None, "algorithm of instument %r is None" % i
