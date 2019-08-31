@@ -23,7 +23,7 @@ def parse_dmp(filename):
             dmp.algorithm = read_byte(f)
             dmp.lfo_ams = read_byte(f)
             ops = []
-            for i in range(4):
+            for _ in range(4):
                 ops.append(parse_operator(f))
             dmp.operators.append(ops[0])
             dmp.operators.append(ops[2])

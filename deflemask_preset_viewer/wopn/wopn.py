@@ -7,5 +7,8 @@ class Wopn(Preset):
         self.magic_number = None
         self.version = None
 
+    def info(self):
+        return 'WOPN'
+
     def print_info(self):
-        print("WOPN")
+        print(self.info())
