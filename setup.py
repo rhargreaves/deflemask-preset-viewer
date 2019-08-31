@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="deflemask-preset-viewer",
-    version="0.0.8",
+    version="0.0.9",
     author="Robert Hargreaves",
     author_email="python-package@roberthargreaves.net",
     description="Reads and outputs FM parameters contained within DefleMask's DMP files",
