@@ -73,12 +73,13 @@ def read_operator(f):
     second_decay_rate_reg = int.from_bytes(
         f.read(1), byteorder='big', signed=False)
     op.d2r = second_decay_rate_reg
-
-    op.sl = -1
-    op.rr = -1
+    sustain_level_and_release_rate_reg = int.from_bytes(
+        f.read(1), byteorder='big', signed=False)
+    op.sl = sustain_level_and_release_rate_reg >> 4
+    op.rr = sustain_level_and_release_rate_reg & 0xf
 
     op.ssg = -1
-    f.read(2)  # ops
+    f.read(1)  # ops
     return op
 
 

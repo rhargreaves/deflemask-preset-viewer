@@ -86,6 +86,8 @@ def test_parses_instrument_fm_parameters():
     assert instrument.operators[0].am == 0
     assert instrument.operators[0].dr == 11
     assert instrument.operators[0].d2r == 6
+    assert instrument.operators[0].sl == 7
+    assert instrument.operators[0].rr == 6
 
     assert instrument2.operators[0].dt == 4
     assert instrument2.operators[0].rs == 1
