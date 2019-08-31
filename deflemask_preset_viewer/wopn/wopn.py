@@ -17,11 +17,18 @@ class Wopn():
         text = text + 'LFO' + \
             "{0:>9}\n".format('On' if self.lfo_enable else 'Off')
         text = text + 'LFO Freq' + "{0:>4}\n".format(self.lfo_freq)
+        for bank in self.m_banks:
+            for instrument in bank.instruments:
+                text = text + instrument.info()
         return text
 
 
-class WponInstrument(Preset):
-    pass
+class WopnInstrument(Preset):
+    def __init__(self):
+        Preset.__init__(self)
+
+    def info(self):
+        return super(WopnInstrument, self).info()
 
 
 class WopnBank():

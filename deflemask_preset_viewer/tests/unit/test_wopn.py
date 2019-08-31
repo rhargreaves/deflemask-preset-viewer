@@ -1,4 +1,4 @@
-from ...wopn.wopn import Wopn, WopnBank
+from ...wopn.wopn import Wopn, WopnBank, WopnInstrument
 import pytest
 
 wopn = Wopn()
@@ -10,6 +10,11 @@ def setup_module(module):
     wopn.m_banks = [WopnBank('bank0', 0), WopnBank('bank1', 1)]
     wopn.p_banks = [WopnBank('bank0', 0), WopnBank(
         'bank1', 1), WopnBank('bank2', 2)]
+    wopn.m_banks[0].instruments = [WopnInstrument()]
+    wopn.m_banks[1].instruments = [WopnInstrument()]
+    wopn.p_banks[0].instruments = [WopnInstrument()]
+    wopn.p_banks[1].instruments = [WopnInstrument()]
+    wopn.p_banks[2].instruments = [WopnInstrument()]
 
 
 def test_returns_wopn_version_info():
@@ -32,7 +37,7 @@ def test_returns_global_lfo_info():
     assert 'LFO Freq   1' in info
 
 
-@pytest.mark.skip(reason="WIP")
 def test_returns_text_info_on_preset():
-    wopn = Wopn()
-    assert 'Algorithm' in wopn.info()
+    info = wopn.info()
+
+    assert 'Algorithm' in info

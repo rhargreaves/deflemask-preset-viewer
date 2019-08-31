@@ -1,4 +1,4 @@
-from .wopn import Wopn, WopnBank, WponInstrument
+from .wopn import Wopn, WopnBank, WopnInstrument
 
 
 def parse_wopn(filename):
@@ -31,7 +31,7 @@ def parse_wopn(filename):
 
 
 def read_instrument(f):
-    instrument = WponInstrument()
+    instrument = WopnInstrument()
     instrument.name = f.read(32).decode('ascii').rstrip('\0')
     instrument.key_offset = int.from_bytes(
         f.read(2), byteorder='big', signed=True)
