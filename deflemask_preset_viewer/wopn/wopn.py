@@ -1,4 +1,5 @@
 from ..preset import Preset
+from ..ui import generate_line
 
 
 class Wopn():
@@ -9,10 +10,6 @@ class Wopn():
         self.p_banks = None
         self.lfo_enable = None
         self.lfo_freq = None
-
-    def generate_line(self, char):
-        LINE_WIDTH = 60
-        return (char * LINE_WIDTH) + '\n'
 
     def info(self):
         text = 'WOPN\n'
@@ -26,21 +23,21 @@ class Wopn():
         return text
 
     def bank_info(self, bank, bank_index):
-        text = self.generate_line('=')
+        text = generate_line('=')
         text = text + 'Bank' + \
             "{0:>8}".format(bank_index) + \
             '    ' + bank.name + '\n'
-        text = text + self.generate_line('=')
+        text = text + generate_line('=')
         for instrument_index, instrument in enumerate(bank.instruments):
             text = text + self.instrument_info(instrument, instrument_index)
         return text
 
     def instrument_info(self, instrument, instrument_index):
-        text = self.generate_line('-')
+        text = generate_line('=')
         text = text + 'Instrument' + \
             "{0:>5}".format(instrument_index) + \
             '    ' + instrument.name + '\n'
-        text = text + self.generate_line('-')
+        text = text + generate_line('=')
         text = text + instrument.info()
         return text
 

@@ -1,3 +1,5 @@
+from .ui import generate_line
+
 
 class Preset:
     def __init__(self):
@@ -16,10 +18,14 @@ class Preset:
         return header + optext + "\n"
 
     def operator_headers(self):
-        text = "Operator   "
+        text = generate_line('-')
+        text = text + "Operator   "
         for i in range(4):
-            text = text + "{0:<8}".format(i+1)
-        return text + '\n'
+            text = text + "{0:<8}".format(i + 1)
+        text = text + '\n'
+        generate_line('-')
+        text = text + generate_line('-')
+        return text
 
     def info(self):
         text = "Algorithm  {}       LFO FMS  {}\nFeedback   {}       LFO AMS  {}\n".format(
