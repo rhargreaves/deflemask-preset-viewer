@@ -40,4 +40,5 @@ def test_returns_global_lfo_info():
 def test_returns_text_info_on_preset():
     info = wopn.info()
 
+    assert 'Instrument    0' in info
     assert 'Algorithm' in info

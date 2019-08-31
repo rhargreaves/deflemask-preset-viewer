@@ -57,7 +57,7 @@ def read_operator(f):
     op = FmOperator()
     detune_multiple_reg = int.from_bytes(
         f.read(1), byteorder='big', signed=False)
-    op.mul = detune_multiple_reg & 0x15
+    op.mul = detune_multiple_reg & 0xf
     op.dt = detune_multiple_reg >> 4
     op.tl = -1
     op.ar = -1
