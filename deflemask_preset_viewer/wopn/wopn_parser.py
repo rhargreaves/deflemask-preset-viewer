@@ -77,9 +77,9 @@ def read_operator(f):
         f.read(1), byteorder='big', signed=False)
     op.sl = sustain_level_and_release_rate_reg >> 4
     op.rr = sustain_level_and_release_rate_reg & 0xf
-
-    op.ssg = -1
-    f.read(1)  # ops
+    ssg_reg = int.from_bytes(
+        f.read(1), byteorder='big', signed=False)
+    op.ssg = ssg_reg
     return op
 
 
