@@ -2,21 +2,25 @@ import subprocess
 import pytest
 
 
-def test_returns_non_zero():
-    subprocess.check_call(["python3", "-m", "src", "-h"])
+def test_returns_help_page():
+    stdout = subprocess.check_output(
+        ["python3", "-m", "deflemask_preset_viewer", "-h"]).decode()
+
+    assert 'usage:' in stdout
 
 
-# @pytest.mark.skip(reason="WIP")
 def test_returns_details_for_wopn():
     stdout = subprocess.check_output(
-        ["python3", "-m", "src", "tests/data/sample.wopn"]).decode()
+        ["python3", "-m", "deflemask_preset_viewer",
+         "deflemask_preset_viewer/tests/data/sample.wopn"]).decode()
 
     assert 'WOPN' in stdout
 
 
 def test_returns_details_for_version_8_dmp():
     stdout = subprocess.check_output(
-        ["python3", "-m", "src", "tests/data/sample.dmp"]).decode()
+        ["python3", "-m", "deflemask_preset_viewer",
+         "deflemask_preset_viewer/tests/data/sample.dmp"]).decode()
 
     assert 'FM' in stdout
     assert 'Version    8' in stdout
@@ -24,7 +28,8 @@ def test_returns_details_for_version_8_dmp():
 
 def test_returns_details_for_version_11_dmp():
     stdout = subprocess.check_output(
-        ["python3", "-m", "src", "tests/data/sample_new.dmp"]).decode()
+        ["python3", "-m", "deflemask_preset_viewer",
+         "deflemask_preset_viewer/tests/data/sample_new.dmp"]).decode()
 
     assert 'FM' in stdout
     assert 'Genesis' in stdout
@@ -32,9 +37,10 @@ def test_returns_details_for_version_11_dmp():
 
 
 def test_returns_fm_parameters():
-    for f in ["tests/data/sample_new.dmp", "tests/data/sample.dmp"]:
+    for f in ["deflemask_preset_viewer/tests/data/sample_new.dmp",
+              "deflemask_preset_viewer/tests/data/sample.dmp"]:
         stdout = subprocess.check_output(
-            ["python3", "-m", "src", f]).decode()
+            ["python3", "-m", "deflemask_preset_viewer", f]).decode()
 
     assert 'LFO FMS  0' in stdout
     assert 'Feedback   0' in stdout
@@ -64,7 +70,8 @@ def op_values(name, values):
 
 def test_outputs_in_midi_interface_code_format():
     stdout = subprocess.check_output(
-        ["python3", "-m", "src", "tests/data/sample.dmp", "-c"]).decode()
+        ["python3", "-m", "deflemask_preset_viewer",
+         "deflemask_preset_viewer/tests/data/sample.dmp", "-c"]).decode()
 
     assert stdout == 'static const Channel SAMPLE = ' + \
         '{ 3, 0, 3, 0, 0, 0, 0, { ' + \

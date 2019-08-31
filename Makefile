@@ -1,3 +1,5 @@
+PYTHONPATH := $(PWD) 
+
 all: test
 
 test:
@@ -9,7 +11,7 @@ build:
 .PHONY: build
 
 run:
-	python3 -m src
+	python3 -m deflemask-preset-viewer
 .PHONY: run
 
 clean:
