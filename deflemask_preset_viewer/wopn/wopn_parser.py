@@ -59,7 +59,9 @@ def read_operator(f):
         f.read(1), byteorder='big', signed=False)
     op.mul = detune_multiple_reg & 0xf
     op.dt = detune_multiple_reg >> 4
-    op.tl = -1
+    total_level_reg = int.from_bytes(
+        f.read(1), byteorder='big', signed=False)
+    op.tl = total_level_reg
     op.ar = -1
     op.dr = -1
     op.sl = -1
@@ -69,7 +71,7 @@ def read_operator(f):
 
     op.d2r = -1
     op.ssg = -1
-    f.read(6)  # ops
+    f.read(5)  # ops
     return op
 
 

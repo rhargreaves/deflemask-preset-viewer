@@ -80,6 +80,7 @@ def test_parses_instrument_fm_parameters():
     assert instrument.lfo_fms == 0
     assert instrument.operators[0].mul == 7
     assert instrument.operators[0].dt == 0
+    assert instrument.operators[0].tl == 25
     assert instrument2.operators[0].dt == 4
 
 
