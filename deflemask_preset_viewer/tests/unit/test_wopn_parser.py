@@ -47,15 +47,26 @@ def test_parses_percussion_banks():
     assert wopn.p_banks[1].name == 'XG #049 SymphKit'
 
 
-def test_parses_instruments_in_melodic_banks():
+def test_there_are_128_instruments_in_melodic_banks():
     wopn = parse_wopn(SAMPLE_WOPN)
 
     for bank in wopn.m_banks:
         assert len(bank.instruments) == 128
-        for i, instrument in enumerate(bank.instruments):
 
-            assert instrument.name != None, "name of instrument %r is None" % i
-            assert instrument.algorithm != None, "algorithm of instument %r is None" % i
+
+def test_there_are_128_instruments_in_percussion_banks():
+    wopn = parse_wopn(SAMPLE_WOPN)
+
+    for bank in wopn.p_banks:
+        assert len(bank.instruments) == 128
+
+
+def test_parses_instruments_in_melodic_banks():
+    wopn = parse_wopn(SAMPLE_WOPN)
+
+    assert wopn.m_banks[0].instruments[0].name == '* GrandPiano'
+    assert wopn.m_banks[0].instruments[1].name == '* BrightPiano'
+    assert wopn.m_banks[1].instruments[0].name == ''
 
 
 def test_parses_instruments_in_percussion_banks():
