@@ -56,7 +56,7 @@ def test_returns_fm_parameters():
     assert op_values('RR', [15, 15, 15, 15]) in stdout
     assert op_values('AM', [0, 0, 0, 0]) in stdout
     assert op_values('RS', [2, 0, 0, 0]) in stdout
-    assert op_values('DT', [3, 3, 3, 3]) in stdout
+    assert op_values('DT1', [3, 3, 3, 3]) in stdout
     assert op_values('D2R', [0, 0, 0, 0]) in stdout
     assert op_values('SSG', [0, 0, 0, 0]) in stdout
 

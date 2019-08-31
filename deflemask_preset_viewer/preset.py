@@ -34,7 +34,7 @@ class Preset:
         text = text + self.op("RR", lambda op: op.rr, self.operators)
         text = text + self.op("AM", lambda op: op.am, self.operators)
         text = text + self.op("RS", lambda op: op.rs, self.operators)
-        text = text + self.op("DT", lambda op: op.dt, self.operators)
+        text = text + self.op("DT1", lambda op: op.dt, self.operators)
         text = text + self.op("D2R", lambda op: op.d2r, self.operators)
         text = text + self.op("SSG", lambda op: op.ssg, self.operators)
         return text
