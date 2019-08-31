@@ -1,9 +1,9 @@
-import setuptools
+from setuptools import setup, find_packages
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-setuptools.setup(
+setup(
     name="deflemask-preset-viewer",
     version="0.0.8",
     author="Robert Hargreaves",
@@ -12,7 +12,8 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/rhargreaves/deflemask-preset-viewer",
-    packages=["deflemask_preset_viewer"],
+    packages=find_packages(
+        exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     entry_points={
         "console_scripts": ['deflemask-preset-viewer = deflemask_preset_viewer.main:main']
     },
