@@ -25,7 +25,7 @@ class Wopn():
     def bank_info(self, bank, bank_index):
         text = generate_line('=')
         text = text + 'Bank' + \
-            "{0:>8}".format(bank_index) + \
+            "{0:>11}".format(bank_index) + \
             '    ' + bank.name + '\n'
         text = text + generate_line('=')
         for instrument_index, instrument in enumerate(bank.instruments):
