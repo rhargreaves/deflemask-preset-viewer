@@ -1,4 +1,4 @@
-from .preset import Preset
+from ..preset import Preset
 
 
 class Dmp(Preset):

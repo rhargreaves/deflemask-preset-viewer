@@ -1,12 +1,12 @@
 from .dmp import Dmp
-from .fm_operator import FmOperator
+from ..fm_operator import FmOperator
 
 
 def read_byte(file):
     return file.read(1)[0]
 
 
-def parse_file(filename):
+def parse_dmp(filename):
     dmp = Dmp()
     with open(filename, "rb") as f:
         dmp.name = filename

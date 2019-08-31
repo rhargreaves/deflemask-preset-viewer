@@ -9,14 +9,14 @@ def test_returns_non_zero():
 # @pytest.mark.skip(reason="WIP")
 def test_returns_details_for_wopn():
     stdout = subprocess.check_output(
-        ["python3", "-m", "src", "tests/sample.wopn"]).decode()
+        ["python3", "-m", "src", "tests/data/sample.wopn"]).decode()
 
     assert 'WOPN' in stdout
 
 
 def test_returns_details_for_version_8_dmp():
     stdout = subprocess.check_output(
-        ["python3", "-m", "src", "tests/sample.dmp"]).decode()
+        ["python3", "-m", "src", "tests/data/sample.dmp"]).decode()
 
     assert 'FM' in stdout
     assert 'Version    8' in stdout
@@ -24,7 +24,7 @@ def test_returns_details_for_version_8_dmp():
 
 def test_returns_details_for_version_11_dmp():
     stdout = subprocess.check_output(
-        ["python3", "-m", "src", "tests/sample_new.dmp"]).decode()
+        ["python3", "-m", "src", "tests/data/sample_new.dmp"]).decode()
 
     assert 'FM' in stdout
     assert 'Genesis' in stdout
@@ -32,7 +32,7 @@ def test_returns_details_for_version_11_dmp():
 
 
 def test_returns_fm_parameters():
-    for f in ["tests/sample_new.dmp", "tests/sample.dmp"]:
+    for f in ["tests/data/sample_new.dmp", "tests/data/sample.dmp"]:
         stdout = subprocess.check_output(
             ["python3", "-m", "src", f]).decode()
 
@@ -64,7 +64,7 @@ def op_values(name, values):
 
 def test_outputs_in_midi_interface_code_format():
     stdout = subprocess.check_output(
-        ["python3", "-m", "src", "tests/sample.dmp", "-c"]).decode()
+        ["python3", "-m", "src", "tests/data/sample.dmp", "-c"]).decode()
 
     assert stdout == 'static const Channel SAMPLE = ' + \
         '{ 3, 0, 3, 0, 0, 0, 0, { ' + \

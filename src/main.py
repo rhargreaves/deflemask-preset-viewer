@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import argparse
-from .parser import parse_file
-from .wopn_parser import parse_wopn
+from .dmp.dmp_parser import parse_dmp
+from .wopn.wopn_parser import parse_wopn
 from .code import print_code
 
 
@@ -10,7 +10,7 @@ def main():
     if args.file.lower().endswith('.wopn'):
         preset = parse_wopn(args.file)
     else:
-        preset = parse_file(args.file)
+        preset = parse_dmp(args.file)
     if args.c_code:
         print_code(preset)
     else:
