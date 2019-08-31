@@ -19,9 +19,9 @@ class Preset:
 
     def operator_headers(self):
         text = generate_line('-')
-        text = text + "Operator   "
+        text = text + "Parameter  "
         for i in range(4):
-            text = text + "{0:<8}".format(i + 1)
+            text = text + "Op {0:<5}".format(i + 1)
         text = text + '\n'
         generate_line('-')
         text = text + generate_line('-')

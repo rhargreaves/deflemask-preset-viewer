@@ -23,7 +23,7 @@ Version    8       FM       Unknown
 Algorithm  3       LFO FMS  0
 Feedback   0       LFO AMS  0
 ------------------------------------------------------------
-Operator   1       2       3       4
+Parameter  Op 1    Op 2    Op 3    Op 4
 ------------------------------------------------------------
 MUL        14      1       0       0
 TL         39      24      24      19
@@ -56,7 +56,7 @@ Instrument    0    * GrandPiano
 Algorithm  2       LFO FMS  0
 Feedback   0       LFO AMS  0
 ------------------------------------------------------------
-Operator   1       2       3       4
+Parameter  Op 1    Op 2    Op 3    Op 4
 ------------------------------------------------------------
 MUL        1       4       2       1
 TL         39      36      4       2
@@ -74,6 +74,7 @@ Instrument    1    * BrightPiano
 ============================================================
 Algorithm  5       LFO FMS  0
 Feedback   7       LFO AMS  0
+------------------------------------------------------------
 ...
 ```
 
