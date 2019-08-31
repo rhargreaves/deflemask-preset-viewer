@@ -70,13 +70,15 @@ def read_operator(f):
         f.read(1), byteorder='big', signed=False)
     op.am = amplitude_first_decay_reg >> 7
     op.dr = amplitude_first_decay_reg & 0x1f
+    second_decay_rate_reg = int.from_bytes(
+        f.read(1), byteorder='big', signed=False)
+    op.d2r = second_decay_rate_reg
 
     op.sl = -1
     op.rr = -1
 
-    op.d2r = -1
     op.ssg = -1
-    f.read(3)  # ops
+    f.read(2)  # ops
     return op
 
 
