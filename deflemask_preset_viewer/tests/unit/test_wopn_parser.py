@@ -43,8 +43,8 @@ def test_parses_melodic_bank_names():
 def test_parses_percussion_banks():
     wopn = parse_wopn(SAMPLE_WOPN)
 
-    for bank in wopn.p_banks:
-        assert bank.name != ''
+    assert wopn.p_banks[0].name == 'XG #001 StandKit'
+    assert wopn.p_banks[1].name == 'XG #049 SymphKit'
 
 
 def test_parses_instruments_in_melodic_banks():
