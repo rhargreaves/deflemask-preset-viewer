@@ -34,15 +34,18 @@ def read_instrument(f):
     instrument = WopnInstrument()
     instrument.name = f.read(32).decode('ascii').rstrip('\0')
     instrument.key_offset = int.from_bytes(
-        f.read(2), byteorder='big', signed=True)
+        f.read(2), byteorder='big', signed=False)
     instrument.percussion_key = int.from_bytes(
-        f.read(1), byteorder='big', signed=True)
+        f.read(1), byteorder='big', signed=False)
     feedback_algorithm_reg = int.from_bytes(
-        f.read(1), byteorder='big', signed=True)
+        f.read(1), byteorder='big', signed=False)
     instrument.algorithm = (feedback_algorithm_reg << 5) >> 5
     instrument.feedback = feedback_algorithm_reg >> 3
-    lfo_reg = int.from_bytes(
-        f.read(1), byteorder='big', signed=True)
+    stereo_lfo_reg = int.from_bytes(
+        f.read(1), byteorder='big', signed=False)
+    instrument.lfo_ams = stereo_lfo_reg >> 3
+    instrument.lfo_fms = stereo_lfo_reg & 0x7
+
     f.read(7 * 4)  # ops
     f.read(4)  # delay
     return instrument
