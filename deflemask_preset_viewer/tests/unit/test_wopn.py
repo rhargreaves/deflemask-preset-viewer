@@ -1,10 +1,17 @@
-from ...wopn.wopn import Wopn
+from ...wopn.wopn import Wopn, WopnBank
 import pytest
 
 
 def test_returns_text_info():
     wopn = Wopn()
-    assert wopn.info() == "WOPN"
+    wopn.m_banks = [WopnBank('bank0', 0), WopnBank('bank1', 1)]
+    wopn.p_banks = [WopnBank('bank0', 0), WopnBank('bank1', 1)]
+
+    info = wopn.info()
+
+    assert 'WOPN' in info
+    assert 'M_Banks   2' in info
+    assert 'P_Banks   2' in info
 
 
 @pytest.mark.skip(reason="WIP")

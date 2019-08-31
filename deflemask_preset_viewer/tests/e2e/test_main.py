@@ -16,6 +16,8 @@ def test_returns_details_for_wopn():
          SAMPLE_WOPN]).decode()
 
     assert 'WOPN' in stdout
+    assert 'M_Banks' in stdout
+    assert 'P_Banks' in stdout
 
 
 def test_returns_details_for_version_8_dmp():
