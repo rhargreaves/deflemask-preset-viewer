@@ -10,11 +10,11 @@ def setup_module(module):
     wopn.m_banks = [WopnBank('bank0', 0), WopnBank('bank1', 1)]
     wopn.p_banks = [WopnBank('bank0', 0), WopnBank(
         'bank1', 1), WopnBank('bank2', 2)]
-    wopn.m_banks[0].instruments = [WopnInstrument()]
-    wopn.m_banks[1].instruments = [WopnInstrument()]
-    wopn.p_banks[0].instruments = [WopnInstrument()]
-    wopn.p_banks[1].instruments = [WopnInstrument()]
-    wopn.p_banks[2].instruments = [WopnInstrument()]
+    wopn.m_banks[0].instruments = [WopnInstrument("Grand Piano")]
+    wopn.m_banks[1].instruments = [WopnInstrument("")]
+    wopn.p_banks[0].instruments = [WopnInstrument("")]
+    wopn.p_banks[1].instruments = [WopnInstrument("")]
+    wopn.p_banks[2].instruments = [WopnInstrument("")]
 
 
 def test_returns_wopn_version_info():
@@ -40,5 +40,5 @@ def test_returns_global_lfo_info():
 def test_returns_text_info_on_preset():
     info = wopn.info()
 
-    assert 'Instrument    0' in info
+    assert 'Instrument    0    Grand Piano' in info
     assert 'Algorithm' in info

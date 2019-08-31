@@ -32,8 +32,8 @@ def parse_wopn(filename):
 
 
 def read_instrument(f):
-    instrument = WopnInstrument()
-    instrument.name = f.read(32).decode('ascii').rstrip('\0')
+    name = f.read(32).decode('ascii').rstrip('\0')
+    instrument = WopnInstrument(name)
     instrument.key_offset = int.from_bytes(
         f.read(2), byteorder='big', signed=False)
     instrument.percussion_key = int.from_bytes(
