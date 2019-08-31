@@ -69,6 +69,13 @@ def test_parses_instruments_in_melodic_banks():
     assert wopn.m_banks[1].instruments[0].name == ''
 
 
+def test_parses_instrument_fm_parameters():
+    wopn = parse_wopn(SAMPLE_WOPN)
+
+    assert wopn.m_banks[0].instruments[0].algorithm == 2
+    assert wopn.m_banks[0].instruments[0].feedback == 0
+
+
 def test_parses_instruments_in_percussion_banks():
     wopn = parse_wopn(SAMPLE_WOPN)
 
