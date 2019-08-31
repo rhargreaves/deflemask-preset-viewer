@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setup(
     name="deflemask-preset-viewer",
-    version="0.0.10",
+    version="0.1.0",
     author="Robert Hargreaves",
     author_email="python-package@roberthargreaves.net",
-    description="Reads and outputs FM parameters contained within DefleMask's DMP files",
+    description="Reads and outputs FM parameters contained within DefleMask's DMP files as well as libOPNMIDI WOPN files",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/rhargreaves/deflemask-preset-viewer",
