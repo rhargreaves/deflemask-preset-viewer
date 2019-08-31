@@ -41,4 +41,5 @@ def test_returns_text_info_on_preset():
     info = wopn.info()
 
     assert 'Instrument    0    Grand Piano' in info
-    assert 'Bank          0' in info
+    assert 'M. Bank       0' in info
+    assert 'P. Bank       0' in info

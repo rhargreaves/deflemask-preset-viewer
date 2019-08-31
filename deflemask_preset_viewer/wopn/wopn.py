@@ -19,13 +19,15 @@ class Wopn():
             "{0:>9}\n".format('On' if self.lfo_enable else 'Off')
         text = text + 'LFO Freq' + "{0:>4}\n".format(self.lfo_freq)
         for bank_index, bank in enumerate(self.m_banks):
-            text = text + self.bank_info(bank, bank_index)
+            text = text + self.bank_info(bank, bank_index, 'M')
+        for bank_index, bank in enumerate(self.p_banks):
+            text = text + self.bank_info(bank, bank_index, 'P')
         return text
 
-    def bank_info(self, bank, bank_index):
+    def bank_info(self, bank, bank_index, bank_type):
         text = generate_line('=')
-        text = text + 'Bank' + \
-            "{0:>11}".format(bank_index) + \
+        text = text + bank_type + '. Bank' + \
+            "{0:>8}".format(bank_index) + \
             '    ' + bank.name + '\n'
         text = text + generate_line('=')
         for instrument_index, instrument in enumerate(bank.instruments):
