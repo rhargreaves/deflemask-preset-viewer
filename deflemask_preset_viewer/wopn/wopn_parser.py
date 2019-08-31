@@ -62,16 +62,19 @@ def read_operator(f):
     total_level_reg = int.from_bytes(
         f.read(1), byteorder='big', signed=False)
     op.tl = total_level_reg
-    op.ar = -1
+    rate_scale_attack_reg = int.from_bytes(
+        f.read(1), byteorder='big', signed=False)
+    op.ar = rate_scale_attack_reg & 0x1f
+    op.rs = rate_scale_attack_reg >> 6
+
     op.dr = -1
     op.sl = -1
     op.rr = -1
     op.am = -1
-    op.rs = -1
 
     op.d2r = -1
     op.ssg = -1
-    f.read(5)  # ops
+    f.read(4)  # ops
     return op
 
 

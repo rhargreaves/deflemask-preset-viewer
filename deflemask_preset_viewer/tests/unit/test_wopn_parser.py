@@ -81,7 +81,10 @@ def test_parses_instrument_fm_parameters():
     assert instrument.operators[0].mul == 7
     assert instrument.operators[0].dt == 0
     assert instrument.operators[0].tl == 25
+    assert instrument.operators[0].rs == 0
+    assert instrument.operators[0].ar == 15
     assert instrument2.operators[0].dt == 4
+    assert instrument2.operators[0].rs == 1
 
 
 def test_parses_instruments_in_percussion_banks():
