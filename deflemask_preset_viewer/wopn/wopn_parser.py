@@ -66,15 +66,17 @@ def read_operator(f):
         f.read(1), byteorder='big', signed=False)
     op.ar = rate_scale_attack_reg & 0x1f
     op.rs = rate_scale_attack_reg >> 6
+    amplitude_first_decay_reg = int.from_bytes(
+        f.read(1), byteorder='big', signed=False)
+    op.am = amplitude_first_decay_reg >> 7
+    op.dr = amplitude_first_decay_reg & 0x1f
 
-    op.dr = -1
     op.sl = -1
     op.rr = -1
-    op.am = -1
 
     op.d2r = -1
     op.ssg = -1
-    f.read(4)  # ops
+    f.read(3)  # ops
     return op
 
 
