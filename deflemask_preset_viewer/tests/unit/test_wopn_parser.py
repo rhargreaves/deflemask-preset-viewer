@@ -33,11 +33,11 @@ def test_parses_global_flags():
     assert wopn.lfo_freq == 1
 
 
-def test_parses_melodic_banks():
+def test_parses_melodic_bank_names():
     wopn = parse_wopn(SAMPLE_WOPN)
 
-    for bank in wopn.m_banks:
-        assert bank.name != ''
+    assert wopn.m_banks[0].name == 'Standard :3'
+    assert wopn.m_banks[1].name == 'XG SFX #000'
 
 
 def test_parses_percussion_banks():
