@@ -9,6 +9,3 @@ class Wopn(Preset):
 
     def info(self):
         return 'WOPN'
-
-    def print_info(self):
-        print(self.info())

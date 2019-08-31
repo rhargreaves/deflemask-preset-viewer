@@ -8,37 +8,38 @@ class Dmp(Preset):
         self.system_type = None
         self.instrument_mode = None
 
-    def print_info(self):
-        self.print_type()
+    def info(self):
+        text = self.dmp_type() + '\n'
         if self.instrument_mode == 1:
-            print("Algorithm  {}       LFO FMS  {}".format(
-                self.algorithm, self.lfo_fms))
-            print("Feedback   {}       LFO AMS  {}".format(
-                self.feedback, self.lfo_ams))
-            self.print_operator_headers()
-            self.print_op("MUL", lambda op: op.mul, self.operators)
-            self.print_op("TL", lambda op: op.tl, self.operators)
-            self.print_op("AR", lambda op: op.ar, self.operators)
-            self.print_op("DR", lambda op: op.dr, self.operators)
-            self.print_op("SL", lambda op: op.sl, self.operators)
-            self.print_op("RR", lambda op: op.rr, self.operators)
-            self.print_op("AM", lambda op: op.am, self.operators)
-            self.print_op("RS", lambda op: op.rs, self.operators)
-            self.print_op("DT", lambda op: op.dt, self.operators)
-            self.print_op("D2R", lambda op: op.d2r, self.operators)
-            self.print_op("SSG", lambda op: op.ssg, self.operators)
+            text = text + "Algorithm  {}       LFO FMS  {}\nFeedback   {}       LFO AMS  {}\n".format(
+                self.algorithm, self.lfo_fms,
+                self.feedback, self.lfo_ams)
+        text = text + self.operator_headers()
+        text = text + self.op("MUL", lambda op: op.mul, self.operators)
+        text = text + self.op("TL", lambda op: op.tl, self.operators)
+        text = text + self.op("AR", lambda op: op.ar, self.operators)
+        text = text + self.op("DR", lambda op: op.dr, self.operators)
+        text = text + self.op("SL", lambda op: op.sl, self.operators)
+        text = text + self.op("RR", lambda op: op.rr, self.operators)
+        text = text + self.op("AM", lambda op: op.am, self.operators)
+        text = text + self.op("RS", lambda op: op.rs, self.operators)
+        text = text + self.op("DT", lambda op: op.dt, self.operators)
+        text = text + self.op("D2R", lambda op: op.d2r, self.operators)
+        text = text + self.op("SSG", lambda op: op.ssg, self.operators)
+        return text
 
-    def print_op(self, name, value_func, operators):
-        print("{0:<11}".format(name), end='')
+    def op(self, name, value_func, operators):
+        header = "{0:<11}".format(name)
+        optext = ''
         for op in operators:
-            print("{0:<8}".format(value_func(op)), end='')
-        print()
+            optext = optext + "{0:<8}".format(value_func(op))
+        return header + optext + "\n"
 
-    def print_operator_headers(self):
-        print("Operator   ", end='')
+    def operator_headers(self):
+        text = "Operator   "
         for i in range(4):
-            print("{0:<8}".format(i+1), end='')
-        print()
+            text = text + "{0:<8}".format(i+1)
+        return text + '\n'
 
     def format_instrument_mode(self, mode):
         return "FM" if mode == 1 else "STD"
@@ -46,9 +47,9 @@ class Dmp(Preset):
     def format_system(self, system_type):
         return "Genesis" if system_type == 2 else "Unknown"
 
-    def print_type(self):
-        print("{0:<11}{1:<8}{2:<9}{3:<7}".format(
+    def dmp_type(self):
+        return "{0:<11}{1:<8}{2:<9}{3:<7}".format(
             "Version",
             self.version,
             self.format_instrument_mode(self.instrument_mode),
-            self.format_system(self.system_type)))
+            self.format_system(self.system_type))

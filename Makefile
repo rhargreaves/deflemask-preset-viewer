@@ -11,7 +11,7 @@ build:
 .PHONY: build
 
 run:
-	python3 -m deflemask-preset-viewer
+	python3 -m deflemask_preset_viewer $(ARGS)
 .PHONY: run
 
 clean:
