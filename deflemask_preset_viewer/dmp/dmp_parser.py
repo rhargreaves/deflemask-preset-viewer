@@ -22,8 +22,13 @@ def parse_dmp(filename):
             dmp.feedback = read_byte(f)
             dmp.algorithm = read_byte(f)
             dmp.lfo_ams = read_byte(f)
+            ops = []
             for i in range(4):
-                dmp.operators.append(parse_operator(f))
+                ops.append(parse_operator(f))
+            dmp.operators.append(ops[0])
+            dmp.operators.append(ops[2])
+            dmp.operators.append(ops[1])
+            dmp.operators.append(ops[3])
     return dmp
 
 

@@ -18,8 +18,7 @@ def print_code(preset):
         freq=0,
         name=const_name(preset.name)
     )
-    for i in [0, 2, 1, 3]:
-        op = preset.operators[i]
+    for i, op in enumerate(preset.operators):
         opDef = "{{ {mul}, {detune}, {ar}, {rs}, {dr}, {am}, {sa}, {d2r}, {rr}, {tl}, {ssg} }}".format(
             mul=op.mul,
             detune=op.dt,

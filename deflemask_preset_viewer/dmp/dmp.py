@@ -30,8 +30,7 @@ class Dmp(Preset):
 
     def print_op(self, name, value_func, operators):
         print("{0:<11}".format(name), end='')
-        for i in [0, 2, 1, 3]:
-            op = operators[i]
+        for op in operators:
             print("{0:<8}".format(value_func(op)), end='')
         print()
 
