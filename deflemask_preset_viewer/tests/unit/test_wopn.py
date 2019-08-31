@@ -5,13 +5,14 @@ import pytest
 def test_returns_text_info():
     wopn = Wopn()
     wopn.m_banks = [WopnBank('bank0', 0), WopnBank('bank1', 1)]
-    wopn.p_banks = [WopnBank('bank0', 0), WopnBank('bank1', 1)]
+    wopn.p_banks = [WopnBank('bank0', 0), WopnBank(
+        'bank1', 1), WopnBank('bank2', 2)]
 
     info = wopn.info()
 
     assert 'WOPN' in info
     assert 'M_Banks   2' in info
-    assert 'P_Banks   2' in info
+    assert 'P_Banks   3' in info
 
 
 @pytest.mark.skip(reason="WIP")
