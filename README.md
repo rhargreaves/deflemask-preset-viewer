@@ -41,7 +41,7 @@ SSG        0       0       0       0
 ### WOPN files
 
 ```sh
-$ deflemask_preset_viewer deflemask_preset_viewer/tests/data/sample.wopn
+$ deflemask-preset-viewer deflemask_preset_viewer/tests/data/sample.wopn
 WOPN
 M_Banks    2
 P_Banks    5
