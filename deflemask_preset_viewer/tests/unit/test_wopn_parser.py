@@ -77,6 +77,8 @@ def test_parses_instrument_fm_parameters():
     assert instrument.feedback == 1
     assert instrument.lfo_ams == 0
     assert instrument.lfo_fms == 0
+    assert instrument.operators[0].mul == 5
+    assert instrument.operators[0].dt == 0
 
 
 def test_parses_instruments_in_percussion_banks():

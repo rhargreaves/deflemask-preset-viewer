@@ -54,9 +54,11 @@ def read_instrument(f):
 
 
 def read_operator(f):
-    f.read(7)  # ops
     op = FmOperator()
-    op.mul = -1
+    detune_multiple_reg = int.from_bytes(
+        f.read(1), byteorder='big', signed=False)
+    op.mul = detune_multiple_reg & 0x15
+    op.dt = detune_multiple_reg >> 4
     op.tl = -1
     op.ar = -1
     op.dr = -1
@@ -64,9 +66,10 @@ def read_operator(f):
     op.rr = -1
     op.am = -1
     op.rs = -1
-    op.dt = -1
+
     op.d2r = -1
     op.ssg = -1
+    f.read(6)  # ops
     return op
 
 
