@@ -94,3 +94,7 @@ static const Channel SAMPLE = { 3, 0, 3, 0, 0, 0, 0,
 ```sh
 $ make test
 ```
+
+## Credits
+
+* This project includes FM samples in its automated tests by [Wohlstand](https://github.com/Wohlstand/libOPNMIDI/commits?author=Wohlstand).
