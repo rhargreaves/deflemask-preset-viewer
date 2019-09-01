@@ -1,6 +1,6 @@
 from .wopn import Wopn, WopnBank, WopnInstrument
 from ..fm_operator import FmOperator
-from bitstruct import unpack
+from bitstruct import unpack, unpack_dict
 
 
 def parse_wopn(filename):
@@ -32,10 +32,16 @@ def read_instrument(f):
     instrument = WopnInstrument(name.rstrip('\0'), key_offset,
                                 percussion_key, feedback, algorithm, lfo_ams, lfo_fms)
     for _ in range(4):
-        instrument.operators.append(FmOperator(* unpack(
-            'p1u3u4' + 'p1u7' + 'u2p1u5' + 'u1p2u5' + 'p3u5' + 'u4u4' + 'p4u4', f.read(7))))
+        instrument.operators.append(read_operator(f))
     skip_over_delay_data(f)
     return instrument
+
+
+def read_operator(f):
+    return FmOperator(** unpack_dict(
+        'p1u3u4' + 'p1u7' + 'u2p1u5' + 'u1p2u5' + 'p3u5' + 'u4u4' + 'p4u4',
+        ['dt', 'mul', 'tl', 'rs', 'ar', 'am', 'dr',
+         'd2r', 'sl', 'rr', 'ssg'], f.read(7)))
 
 
 def skip_over_delay_data(f):
