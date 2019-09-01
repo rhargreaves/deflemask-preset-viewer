@@ -10,11 +10,12 @@ def setup_module(module):
     wopn.m_banks = [WopnBank('bank0', 0), WopnBank('bank1', 1)]
     wopn.p_banks = [WopnBank('bank0', 0), WopnBank(
         'bank1', 1), WopnBank('bank2', 2)]
-    wopn.m_banks[0].instruments = [WopnInstrument("Grand Piano")]
-    wopn.m_banks[1].instruments = [WopnInstrument("")]
-    wopn.p_banks[0].instruments = [WopnInstrument("")]
-    wopn.p_banks[1].instruments = [WopnInstrument("")]
-    wopn.p_banks[2].instruments = [WopnInstrument("")]
+    wopn.m_banks[0].instruments = [
+        WopnInstrument("Grand Piano", 0, 0, 0, 0, 0, 0)]
+    wopn.m_banks[1].instruments = [WopnInstrument("", 0, 0, 0, 0, 0, 0)]
+    wopn.p_banks[0].instruments = [WopnInstrument("", 0, 0, 0, 0, 0, 0)]
+    wopn.p_banks[1].instruments = [WopnInstrument("", 0, 0, 0, 0, 0, 0)]
+    wopn.p_banks[2].instruments = [WopnInstrument("", 0, 0, 0, 0, 0, 0)]
 
 
 def test_returns_wopn_version_info():

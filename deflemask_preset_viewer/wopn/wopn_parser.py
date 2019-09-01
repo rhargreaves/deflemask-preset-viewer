@@ -29,13 +29,8 @@ def parse_wopn(filename):
 def read_instrument(f):
     name, key_offset, percussion_key, feedback, algorithm, lfo_ams, lfo_fms = unpack(
         't248p8' + 'u16u8' + 'p2u3u3' + 'p2u3p1u2', f.read(37))
-    instrument = WopnInstrument(name.rstrip('\0'))
-    instrument.key_offset = key_offset
-    instrument.percussion_key = percussion_key
-    instrument.feedback = feedback
-    instrument.algorithm = algorithm
-    instrument.lfo_ams = lfo_ams
-    instrument.lfo_fms = lfo_fms
+    instrument = WopnInstrument(name.rstrip('\0'), key_offset,
+                                percussion_key, feedback, algorithm, lfo_ams, lfo_fms)
     for i in range(4):
         instrument.operators.append(read_operator(f))
     skip_over_delay_data(f)
