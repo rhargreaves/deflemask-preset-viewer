@@ -1,6 +1,6 @@
 from .dmp import Dmp
 from ..fm_operator import FmOperator
-from bitstruct import unpack
+from bitstruct import unpack_dict
 
 
 def read_byte(file):
@@ -34,6 +34,6 @@ def parse_dmp(filename):
 
 
 def parse_operator(f):
-    mul, tl, ar, dr, sl, rr, am, rs, dt, d2r, ssg = unpack(
-        'u8u8u8u8u8u8u8u8u8u8u8', f.read(11))
-    return FmOperator(dt, mul, tl, rs, ar, am, dr, d2r, sl, rr, ssg)
+    return FmOperator(**unpack_dict(
+        'u8u8u8u8u8u8u8u8u8u8u8', ['mul', 'tl', 'ar', 'dr', 'sl',
+                                   'rr', 'am', 'rs', 'dt', 'd2r', 'ssg'], f.read(11)))
