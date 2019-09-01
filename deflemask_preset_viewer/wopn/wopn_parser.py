@@ -27,7 +27,7 @@ def parse_wopn(filename):
 
 
 def read_instrument(f):
-    name = f.read(32).decode('ascii').rstrip('\0')
+    name = unpack('t248p8', f.read(32))[0].rstrip('\0')
     instrument = WopnInstrument(name)
     instrument.key_offset = int.from_bytes(
         f.read(2), byteorder='big', signed=False)
