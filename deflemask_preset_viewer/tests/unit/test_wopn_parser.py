@@ -72,7 +72,7 @@ def test_parses_instruments_in_melodic_banks():
 def test_parses_instrument_fm_parameters():
     wopn = parse_wopn(SAMPLE_WOPN)
     instrument = wopn.m_banks[0].instruments[88]
-    instrument2 = wopn.m_banks[0].instruments[4]
+    another_instrument = wopn.m_banks[0].instruments[4]
 
     assert instrument.algorithm == 4
     assert instrument.feedback == 1
@@ -92,8 +92,8 @@ def test_parses_instrument_fm_parameters():
     assert instrument.operators[1].mul == 1
     assert instrument.operators[2].mul == 8
     assert instrument.operators[3].mul == 1
-    assert instrument2.operators[0].dt == 4
-    assert instrument2.operators[0].rs == 1
+    assert another_instrument.operators[0].dt == 4
+    assert another_instrument.operators[0].rs == 1
 
 
 def test_parses_instruments_in_percussion_banks():
