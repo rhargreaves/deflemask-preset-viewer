@@ -33,16 +33,15 @@ def parse_dmp(filename):
 
 
 def parse_operator(f):
-    op = FmOperator()
-    op.mul = read_byte(f)
-    op.tl = read_byte(f)
-    op.ar = read_byte(f)
-    op.dr = read_byte(f)
-    op.sl = read_byte(f)
-    op.rr = read_byte(f)
-    op.am = read_byte(f)
-    op.rs = read_byte(f)
-    op.dt = read_byte(f)
-    op.d2r = read_byte(f)
-    op.ssg = read_byte(f)
-    return op
+    mul = read_byte(f)
+    tl = read_byte(f)
+    ar = read_byte(f)
+    dr = read_byte(f)
+    sl = read_byte(f)
+    rr = read_byte(f)
+    am = read_byte(f)
+    rs = read_byte(f)
+    dt = read_byte(f)
+    d2r = read_byte(f)
+    ssg = read_byte(f)
+    return FmOperator(dt, mul, tl, rs, ar, am, dr, d2r, sl, rr, ssg)

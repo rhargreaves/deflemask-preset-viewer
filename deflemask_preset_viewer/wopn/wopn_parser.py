@@ -32,20 +32,14 @@ def read_instrument(f):
     instrument = WopnInstrument(name.rstrip('\0'), key_offset,
                                 percussion_key, feedback, algorithm, lfo_ams, lfo_fms)
     for i in range(4):
-        instrument.operators.append(read_operator(f))
+        instrument.operators.append(FmOperator(* unpack(
+            'p1u3u4' + 'p1u7' + 'u2p1u5' + 'u1p2u5' + 'p3u5' + 'u4u4' + 'p4u4', f.read(7))))
     skip_over_delay_data(f)
     return instrument
 
 
 def skip_over_delay_data(f):
     f.read(4)
-
-
-def read_operator(f):
-    op = FmOperator()
-    op.dt, op.mul, op.tl, op.rs, op.ar, op.am, op.dr, op.d2r, op.sl, op.rr, op.ssg = unpack(
-        'p1u3u4' + 'p1u7' + 'u2p1u5' + 'u1p2u5' + 'p3u5' + 'u4u4' + 'p4u4', f.read(7))
-    return op
 
 
 def read_banks(bank_count, f):

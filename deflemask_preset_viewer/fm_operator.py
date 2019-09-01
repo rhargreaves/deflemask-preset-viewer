@@ -1,14 +1,14 @@
 
 class FmOperator:
-    def __init__(self):
-        self.mul = None
-        self.tl = None
-        self.ar = None
-        self.dr = None
-        self.sl = None
-        self.rr = None
-        self.am = None
-        self.rs = None
-        self.dt = None
-        self.d2r = None
-        self.ssg = None
+    def __init__(self, dt, mul, tl, rs, ar, am, dr, d2r, sl, rr, ssg):
+        self.mul = mul
+        self.tl = tl
+        self.ar = ar
+        self.dr = dr
+        self.sl = sl
+        self.rr = rr
+        self.am = am
+        self.rs = rs
+        self.dt = dt
+        self.d2r = d2r
+        self.ssg = ssg
