@@ -108,7 +108,6 @@ static const Channel M_BANK_0_INST_1_BRIGHTPIANO = { 5, 7, 3, 0, 0, 0, 0, {
     { 6, 5, 27, 1, 9, 0, 3, 8, 7, 9, 0 } } };
 
 ...
-
 static const Channel M_BANK_0_INST_127_GUNSHOT = { 5, 7, 3, 0, 1, 0, 0, {
     { 3, 3, 31, 0, 3, 0, 15, 17, 5, 4, 0 },
     { 1, 0, 31, 0, 20, 0, 15, 20, 8, 0, 0 },
