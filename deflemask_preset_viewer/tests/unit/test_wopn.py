@@ -1,4 +1,6 @@
-from ...wopn.wopn import Wopn, WopnBank, WopnInstrument
+from ...wopn.wopn import Wopn
+from ...wopn.wopn_bank import WopnBank
+from ...wopn.wopn_instrument import WopnInstrument
 import pytest
 
 wopn = Wopn()

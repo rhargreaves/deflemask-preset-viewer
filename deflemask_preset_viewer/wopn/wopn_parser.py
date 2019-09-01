@@ -1,6 +1,8 @@
-from .wopn import Wopn, WopnBank, WopnInstrument
-from ..fm_operator import FmOperator
 from bitstruct import unpack, unpack_dict
+from ..fm_operator import FmOperator
+from .wopn import Wopn
+from .wopn_bank import WopnBank
+from .wopn_instrument import WopnInstrument
 
 
 def parse_wopn(filename):

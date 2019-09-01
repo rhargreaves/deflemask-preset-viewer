@@ -1,4 +1,3 @@
-from ..preset import Preset
 from ..ui import generate_line
 
 
@@ -42,25 +41,3 @@ class Wopn():
         text = text + generate_line('=')
         text = text + instrument.info()
         return text
-
-
-class WopnInstrument(Preset):
-    def __init__(self, name, key_offset, percussion_key, feedback, algorithm, lfo_ams, lfo_fms):
-        Preset.__init__(self)
-        self.name = name
-        self.key_offset = key_offset
-        self.percussion_key = percussion_key
-        self.feedback = feedback
-        self.algorithm = algorithm
-        self.lfo_ams = lfo_ams
-        self.lfo_fms = lfo_fms
-
-    def info(self):
-        return super(WopnInstrument, self).info()
-
-
-class WopnBank():
-    def __init__(self, name, index):
-        self.name = name
-        self.index = index
-        self.instruments = []
