@@ -7,10 +7,9 @@ def parse_wopn(filename):
     p = Wopn()
     with open(filename, "rb") as f:
         p.name = filename
-        p.magic_number = unpack('t80', f.read(11))[0]
+        p.magic_number = unpack('t80p8', f.read(11))[0]
         if p.magic_number == 'WOPN2-B2NK':
-            p.version = int.from_bytes(
-                f.read(2), byteorder='little', signed=False)
+            p.version = unpack('u16<', f.read(2))[0]
         else:
             p.version = 1
         unpacked = unpack('u16u16p4b1u3', f.read(5))
