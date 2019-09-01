@@ -15,7 +15,9 @@ $ pip3 install deflemask-preset-viewer
 
 ## Usage
 
-### DMP files
+### Output Parameters to Console
+
+#### DMP files
 
 ```sh
 $ deflemask-preset-viewer deflemask_preset_viewer/tests/data/sample.dmp
@@ -38,7 +40,7 @@ D2R        0       0       0       0
 SSG        0       0       0       0
 ```
 
-### WOPN files
+#### WOPN files
 
 ```sh
 $ deflemask-preset-viewer deflemask_preset_viewer/tests/data/sample.wopn
@@ -78,9 +80,11 @@ Feedback   7       LFO AMS  0
 ...
 ```
 
+### Output as C Code
+
 It can also generate C code for inclusion in the [Mega Drive MIDI Interface](https://github.com/rhargreaves/mega-drive-midi-interface) project. Specify `-c` to output parameters in this way:
 
-### DMP files
+#### DMP files
 
 ```sh
 $ deflemask-preset-viewer deflemask_preset_viewer/tests/data/sample.dmp -c
@@ -91,7 +95,7 @@ static const Channel SAMPLE = { 3, 0, 3, 0, 0, 0, 0,
     { 0, 3, 31, 0, 9, 0, 14, 0, 15, 19, 0 } };
 ```
 
-### WOPN files
+#### WOPN files
 
 ```sh
 $ deflemask-preset-viewer deflemask_preset_viewer/tests/data/sample.wopn -c
