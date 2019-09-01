@@ -13,10 +13,9 @@ def parse_wopn(filename):
                 f.read(2), byteorder='little', signed=False)
         else:
             p.version = 1
-        p.m_bank_count = int.from_bytes(
-            f.read(2), byteorder='big', signed=False)
-        p.p_bank_count = int.from_bytes(
-            f.read(2), byteorder='big', signed=False)
+        unpacked = unpack('u16u16', f.read(4))
+        p.m_bank_count = unpacked[0]
+        p.p_bank_count = unpacked[1]
         global_lfo_reg = int.from_bytes(f.read(1), byteorder='big')
         p.lfo_enable = bool(global_lfo_reg >> 3)
         p.lfo_freq = (global_lfo_reg & 0x7)
