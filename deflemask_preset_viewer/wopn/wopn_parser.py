@@ -43,11 +43,7 @@ def skip_over_delay_data(f):
 
 def read_operator(f):
     op = FmOperator()
-
-    op.dt, op.mul = unpack('p1u3u4', f.read(1))
-    total_level_reg = int.from_bytes(
-        f.read(1), byteorder='big', signed=False)
-    op.tl = total_level_reg
+    op.dt, op.mul, op.tl = unpack('p1u3u4' + 'p1u7', f.read(2))
     rate_scale_attack_reg = int.from_bytes(
         f.read(1), byteorder='big', signed=False)
     op.ar = rate_scale_attack_reg & 0x1f
