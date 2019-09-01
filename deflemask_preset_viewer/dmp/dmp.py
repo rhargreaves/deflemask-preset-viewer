@@ -2,11 +2,12 @@ from ..preset import Preset
 
 
 class Dmp(Preset):
-    def __init__(self):
+    def __init__(self, name, version, system_type, instrument_mode):
         Preset.__init__(self)
-        self.version = None
-        self.system_type = None
-        self.instrument_mode = None
+        self.version = version
+        self.system_type = system_type
+        self.instrument_mode = instrument_mode
+        self.name = name
 
     def info(self):
         text = self.dmp_type() + '\n'

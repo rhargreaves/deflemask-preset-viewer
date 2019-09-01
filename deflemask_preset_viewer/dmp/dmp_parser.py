@@ -8,17 +8,18 @@ def read_byte(file):
 
 
 def parse_dmp(filename):
-    dmp = Dmp()
+
     with open(filename, "rb") as f:
-        dmp.name = filename
-        dmp.version = read_byte(f)
-        if dmp.version == 8:
-            dmp.instrument_mode = read_byte(f)
+        version = read_byte(f)
+        if version == 8:
+            instrument_mode = read_byte(f)
+            system_type = None
             read_byte(f)  # unknown
-        elif dmp.version == 11:
-            dmp.system_type = read_byte(f)
-            dmp.instrument_mode = read_byte(f)
-        if dmp.instrument_mode == 1:
+        elif version == 11:
+            system_type = read_byte(f)
+            instrument_mode = read_byte(f)
+        dmp = Dmp(filename, version, system_type, instrument_mode)
+        if instrument_mode == 1:
             dmp.lfo_fms = read_byte(f)
             dmp.feedback = read_byte(f)
             dmp.algorithm = read_byte(f)
@@ -30,7 +31,7 @@ def parse_dmp(filename):
             dmp.operators.append(ops[2])
             dmp.operators.append(ops[1])
             dmp.operators.append(ops[3])
-    return dmp
+        return dmp
 
 
 def parse_operator(f):
