@@ -31,7 +31,7 @@ def read_instrument(f):
         't248p8' + 'u16u8' + 'p2u3u3' + 'p2u3p1u2', f.read(37))
     instrument = WopnInstrument(name.rstrip('\0'), key_offset,
                                 percussion_key, feedback, algorithm, lfo_ams, lfo_fms)
-    for i in range(4):
+    for _ in range(4):
         instrument.operators.append(FmOperator(* unpack(
             'p1u3u4' + 'p1u7' + 'u2p1u5' + 'u1p2u5' + 'p3u5' + 'u4u4' + 'p4u4', f.read(7))))
     skip_over_delay_data(f)
@@ -45,12 +45,6 @@ def skip_over_delay_data(f):
 def read_banks(bank_count, f):
     banks = []
     for _ in range(bank_count):
-        bank_name = f.read(32).decode('ascii').rstrip('\0')
-        bank_index = int.from_bytes(
-            f.read(2), byteorder='big', signed=False)
-        banks.append(WopnBank(bank_name, bank_index))
+        name, index = unpack("t256u16", f.read(34))
+        banks.append(WopnBank(name.rstrip('\0'), index))
     return banks
-
-
-def read_byte(file):
-    return file.read(1)[0]
