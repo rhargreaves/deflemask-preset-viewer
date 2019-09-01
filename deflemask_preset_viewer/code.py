@@ -40,16 +40,30 @@ def print_preset(preset, name):
     print(code)
 
 
+def preset_name(bank_index, instrument_index, name):
+    if len(name) == 0:
+        return "M_BANK_{}_INST_{}".format(
+            bank_index, instrument_index)
+    else:
+        return "M_BANK_{}_INST_{}_{}".format(
+            bank_index, instrument_index, name)
+
+
+def print_wopn(wopn):
+    for bank_index, bank in enumerate(wopn.m_banks):
+        for instrument_index, instrument in enumerate(bank.instruments):
+            print_preset(instrument, preset_name(
+                bank_index, instrument_index, instrument.name))
+            print('')
+        print("static const Channel M_BANK_{}[] = {{".format(bank_index))
+        for instrument_index, instrument in enumerate(bank.instruments):
+            print("    {},".format(const_name(preset_name(
+                bank_index, instrument_index, instrument.name))))
+        print("};\n")
+
+
 def print_code(model):
     if isinstance(model, Preset):
         print_preset(model, model.name)
     else:
-        for bank_index, bank in enumerate(model.m_banks):
-            for instrument_index, instrument in enumerate(bank.instruments):
-                if len(instrument.name) == 0:
-                    print_preset(instrument, "M_BANK_{}_INST_{}".format(
-                        bank_index, instrument_index))
-                else:
-                    print_preset(instrument, "M_BANK_{}_INST_{}_{}".format(
-                        bank_index, instrument_index, instrument.name))
-                print('\n')
+        print_wopn(model)
