@@ -43,11 +43,8 @@ def skip_over_delay_data(f):
 
 def read_operator(f):
     op = FmOperator()
-    op.dt, op.mul, op.tl, op.rs, op.ar, op.am, op.dr = unpack(
-        'p1u3u4' + 'p1u7' + 'u2p1u5' + 'u1p2u5', f.read(4))
-    second_decay_rate_reg = int.from_bytes(
-        f.read(1), byteorder='big', signed=False)
-    op.d2r = second_decay_rate_reg
+    op.dt, op.mul, op.tl, op.rs, op.ar, op.am, op.dr,  op.d2r = unpack(
+        'p1u3u4' + 'p1u7' + 'u2p1u5' + 'u1p2u5' + 'p3u5', f.read(5))
     sustain_level_and_release_rate_reg = int.from_bytes(
         f.read(1), byteorder='big', signed=False)
     op.sl = sustain_level_and_release_rate_reg >> 4
