@@ -57,8 +57,12 @@ def print_wopn(wopn):
             print('')
         print("static const Channel M_BANK_{}[] = {{".format(bank_index))
         for instrument_index, instrument in enumerate(bank.instruments):
-            print("    {},".format(const_name(preset_name(
-                bank_index, instrument_index, instrument.name))))
+            if instrument_index == 127:
+                print("    {}".format(const_name(preset_name(
+                    bank_index, instrument_index, instrument.name))))
+            else:
+                print("    {},".format(const_name(preset_name(
+                    bank_index, instrument_index, instrument.name))))
         print("};\n")
 
 

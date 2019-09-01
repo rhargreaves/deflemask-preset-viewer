@@ -125,4 +125,4 @@ def test_outputs_wopn_instrument_array_in_midi_interface_code_format():
         "    M_BANK_0_INST_0_GRANDPIANO,\n" + \
         "    M_BANK_0_INST_1_BRIGHTPIANO,\n" + \
         "    M_BANK_0_INST_2_ELECTRICPIANO_ANIMATICS,\n" in stdout
-    assert "};\n" in stdout
+    assert "    M_BANK_0_INST_127_GUNSHOT\n};\n" in stdout
