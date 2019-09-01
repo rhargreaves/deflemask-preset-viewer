@@ -1,11 +1,13 @@
 import os
+import re
+from .preset import Preset
 
 
-def const_name(filename):
-    return os.path.splitext(os.path.basename(filename))[0].upper().replace(' ', '_')
+def const_name(name):
+    return re.sub("[^\w\s]", "", name).upper().replace(' ', '_').replace('__', '_')
 
 
-def print_code(preset):
+def print_preset(preset, name):
     STEREO_L_R = 3
 
     code = "static const Channel {name} = {{ {alg}, {fb}, {stereo}, {ams}, {fms}, {octave}, {freq}, {{ ".format(
@@ -16,7 +18,7 @@ def print_code(preset):
         fms=preset.lfo_fms,
         octave=0,
         freq=0,
-        name=const_name(preset.name)
+        name=const_name(name)
     )
     for i, op in enumerate(preset.operators):
         opDef = "{{ {mul}, {detune}, {ar}, {rs}, {dr}, {am}, {sa}, {d2r}, {rr}, {tl}, {ssg} }}".format(
@@ -36,3 +38,18 @@ def print_code(preset):
             code += ", "
     code += " } };"
     print(code)
+
+
+def print_code(model):
+    if isinstance(model, Preset):
+        print_preset(model, model.name)
+    else:
+        for bank_index, bank in enumerate(model.m_banks):
+            for instrument_index, instrument in enumerate(bank.instruments):
+                if len(instrument.name) == 0:
+                    print_preset(instrument, "M_BANK_{}_INST_{}".format(
+                        bank_index, instrument_index))
+                else:
+                    print_preset(instrument, "M_BANK_{}_INST_{}_{}".format(
+                        bank_index, instrument_index, instrument.name))
+                print('\n')

@@ -1,14 +1,18 @@
 from .dmp import Dmp
 from ..fm_operator import FmOperator
 from bitstruct import unpack_dict
+import os
 
 
 def read_byte(file):
     return file.read(1)[0]
 
 
-def parse_dmp(filename):
+def extract_name(path):
+    return os.path.splitext(os.path.basename(path))[0]
 
+
+def parse_dmp(filename):
     with open(filename, "rb") as f:
         version = read_byte(f)
         if version == 8:
@@ -18,7 +22,8 @@ def parse_dmp(filename):
         elif version == 11:
             system_type = read_byte(f)
             instrument_mode = read_byte(f)
-        dmp = Dmp(filename, version, system_type, instrument_mode)
+        dmp = Dmp(extract_name(filename), version,
+                  system_type, instrument_mode)
         if instrument_mode == 1:
             dmp.lfo_fms = read_byte(f)
             dmp.feedback = read_byte(f)
