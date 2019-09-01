@@ -12,11 +12,8 @@ def parse_wopn(filename):
             p.version = unpack('u16<', f.read(2))[0]
         else:
             p.version = 1
-        unpacked = unpack('u16u16p4b1u3', f.read(5))
-        p.m_bank_count = unpacked[0]
-        p.p_bank_count = unpacked[1]
-        p.lfo_enable = unpacked[2]
-        p.lfo_freq = unpacked[3]
+        p.m_bank_count, p.p_bank_count, p.lfo_enable, p.lfo_freq = unpack(
+            'u16u16p4b1u3', f.read(5))
         if p.version >= 2:
             p.m_banks = read_banks(p.m_bank_count, f)
             p.p_banks = read_banks(p.p_bank_count, f)
