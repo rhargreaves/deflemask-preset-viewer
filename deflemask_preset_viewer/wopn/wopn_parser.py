@@ -28,12 +28,11 @@ def parse_wopn(filename):
 
 def read_instrument(f):
 
-    name, key_offset = unpack('t248p8u2', f.read(34))
+    name, key_offset, percussion_key = unpack('t248p8u2u1', f.read(35))
 
     instrument = WopnInstrument(name.rstrip('\0'))
     instrument.key_offset = key_offset
-    instrument.percussion_key = int.from_bytes(
-        f.read(1), byteorder='big', signed=False)
+    instrument.percussion_key = percussion_key
     feedback_algorithm_reg = int.from_bytes(
         f.read(1), byteorder='big', signed=False)
     instrument.algorithm = feedback_algorithm_reg & 0x7
