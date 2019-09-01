@@ -43,10 +43,8 @@ def skip_over_delay_data(f):
 
 def read_operator(f):
     op = FmOperator()
-    detune_multiple_reg = int.from_bytes(
-        f.read(1), byteorder='big', signed=False)
-    op.mul = detune_multiple_reg & 0xf
-    op.dt = detune_multiple_reg >> 4
+
+    op.dt, op.mul = unpack('p1u3u4', f.read(1))
     total_level_reg = int.from_bytes(
         f.read(1), byteorder='big', signed=False)
     op.tl = total_level_reg
