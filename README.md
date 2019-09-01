@@ -80,6 +80,8 @@ Feedback   7       LFO AMS  0
 
 It can also generate C code for inclusion in the [Mega Drive MIDI Interface](https://github.com/rhargreaves/mega-drive-midi-interface) project. Specify `-c` to output parameters in this way:
 
+### DMP files
+
 ```sh
 $ deflemask-preset-viewer deflemask_preset_viewer/tests/data/sample.dmp -c
 static const Channel SAMPLE = { 3, 0, 3, 0, 0, 0, 0,
@@ -87,6 +89,26 @@ static const Channel SAMPLE = { 3, 0, 3, 0, 0, 0, 0,
     { 1, 3, 31, 0, 14, 0, 14, 0, 15, 24, 0 },
     { 0, 3, 31, 0, 9, 0, 14, 0, 15, 24, 0 },
     { 0, 3, 31, 0, 9, 0, 14, 0, 15, 19, 0 } };
+```
+
+### WOPN files
+
+```sh
+$ deflemask-preset-viewer deflemask_preset_viewer/tests/data/sample.wopn -c
+static const Channel M_BANK_0_INST_0_GRANDPIANO = { 2, 0, 3, 0, 0, 0, 0, { { 1, 0, 26, 1, 7, 0, 7, 4, 1, 39, 0 }, { 4, 6, 24, 1, 9, 0, 6, 9, 7, 36, 0 }, { 2, 7, 31, 3, 23, 0, 9, 15, 1, 4, 0 }, { 1, 3, 27, 2, 4, 0, 10, 4, 6, 2, 0 } } };
+
+static const Channel M_BANK_0_INST_1_BRIGHTPIANO = { 5, 7, 3, 0, 0, 0, 0, { { 4, 2, 27, 1, 9, 0, 11, 5, 6, 33, 0 }, { 4, 5, 27, 1, 9, 0, 7, 9, 7, 18, 0 }, { 1, 2, 27, 1, 5, 1, 10, 5, 6, 8, 0 }, { 6, 5, 27, 1, 9, 0, 3, 8, 7, 9, 0 } } };
+
+...
+
+static const Channel M_BANK_0_INST_127_GUNSHOT = { 5, 7, 3, 0, 1, 0, 0, { { 3, 3, 31, 0, 3, 0, 15, 17, 5, 4, 0 }, { 1, 0, 31, 0, 20, 0, 15, 20, 8, 0, 0 }, { 1, 0, 31, 0, 15, 0, 15, 31, 8, 0, 0 }, { 1, 0, 31, 0, 15, 0, 15, 16, 11, 0, 0 } } };
+
+static const Channel M_BANK_0[] = {
+    M_BANK_0_INST_0_GRANDPIANO,
+    M_BANK_0_INST_1_BRIGHTPIANO,
+...
+    M_BANK_0_INST_127_GUNSHOT
+};
 ```
 
 ## Build & Test
@@ -97,4 +119,4 @@ $ make test
 
 ## Credits
 
-* This project includes FM samples in its automated tests by [Wohlstand](https://github.com/Wohlstand/libOPNMIDI/commits?author=Wohlstand).
+- This project includes FM samples in its automated tests by [Wohlstand](https://github.com/Wohlstand/libOPNMIDI/commits?author=Wohlstand).
