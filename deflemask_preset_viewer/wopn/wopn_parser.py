@@ -1,12 +1,13 @@
 from .wopn import Wopn, WopnBank, WopnInstrument
 from ..fm_operator import FmOperator
+from bitstruct import unpack
 
 
 def parse_wopn(filename):
     p = Wopn()
     with open(filename, "rb") as f:
         p.name = filename
-        p.magic_number = read_magic_number(f)
+        p.magic_number = unpack('t80', f.read(11))[0]
         if p.magic_number == 'WOPN2-B2NK':
             p.version = int.from_bytes(
                 f.read(2), byteorder='little', signed=False)
@@ -98,9 +99,3 @@ def read_banks(bank_count, f):
 
 def read_byte(file):
     return file.read(1)[0]
-
-
-def read_magic_number(f):
-    magic_number = f.read(10).decode('ascii').splitlines()[0]
-    f.read(1)
-    return magic_number
