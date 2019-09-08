@@ -33,14 +33,8 @@ def read_instrument(f):
         't248p8' + 'u16u8' + 'p2u3u3' + 'p2u3p1u2', f.read(37))
     instrument = WopnInstrument(name.rstrip('\0'), key_offset,
                                 percussion_key, feedback, algorithm, lfo_ams, lfo_fms)
-    op1 = read_operator(f)
-    op3 = read_operator(f)
-    op2 = read_operator(f)
-    op4 = read_operator(f)
-    instrument.operators.append(op1)
-    instrument.operators.append(op2)
-    instrument.operators.append(op3)
-    instrument.operators.append(op4)
+    for _ in range(4):
+        instrument.operators.append(read_operator(f))
     skip_over_delay_data(f)
     return instrument
 

@@ -89,8 +89,8 @@ def test_parses_instrument_fm_parameters():
     assert instrument.operators[0].sl == 7
     assert instrument.operators[0].rr == 6
     assert instrument.operators[0].ssg == 0
-    assert instrument.operators[2].mul == 1
-    assert instrument.operators[1].mul == 8
+    assert instrument.operators[1].mul == 1
+    assert instrument.operators[2].mul == 8
     assert instrument.operators[3].mul == 1
     assert another_instrument.operators[0].dt == 4
     assert another_instrument.operators[0].rs == 1
