@@ -7,18 +7,16 @@ def const_name(name):
     return re.sub("[^\w\s]", "", name).upper().replace(' ', '_').replace('__', '_')
 
 
-def print_preset(preset, name):
+def channel_code(preset):
     STEREO_L_R = 3
-
-    code = "static const Channel {name} = {{ {alg}, {fb}, {stereo}, {ams}, {fms}, {octave}, {freq}, {{ ".format(
+    code = "{{ {alg}, {fb}, {stereo}, {ams}, {fms}, {octave}, {freq}, {{ ".format(
         alg=preset.algorithm,
         fb=preset.feedback,
         stereo=STEREO_L_R,
         ams=preset.lfo_ams,
         fms=preset.lfo_fms,
         octave=0,
-        freq=0,
-        name=const_name(name)
+        freq=0
     )
     for i, op in enumerate(preset.operators):
         opDef = "{{ {mul}, {detune}, {ar}, {rs}, {dr}, {am}, {sa}, {d2r}, {rr}, {tl}, {ssg} }}".format(
@@ -36,7 +34,19 @@ def print_preset(preset, name):
         code += opDef
         if i != 3:
             code += ", "
-    code += " } };"
+    code += " } }"
+    return code
+
+
+def print_preset(preset, name):
+    code = "static const Channel {} = {};".format(
+        const_name(name), channel_code(preset))
+    print(code)
+
+
+def print_percussion_preset(preset, name):
+    code = "static const PercussionPreset {} = {{ {}, {} }};".format(
+        const_name(name), channel_code(preset), preset.percussion_key)
     print(code)
 
 
@@ -58,8 +68,12 @@ def print_wopn(wopn):
 
 def print_wopn_bank(bank, bank_index, prefix):
     for instrument_index, instrument in enumerate(bank.instruments):
-        print_preset(instrument, preset_name(
-            bank_index, instrument_index, instrument.name, prefix))
+        if prefix == 'P':
+            print_percussion_preset(instrument, preset_name(
+                bank_index, instrument_index, instrument.name, prefix))
+        else:
+            print_preset(instrument, preset_name(
+                bank_index, instrument_index, instrument.name, prefix))
         print('')
     print("const Channel* const {}_BANK_{}[] = {{".format(prefix, bank_index))
     for instrument_index, instrument in enumerate(bank.instruments):

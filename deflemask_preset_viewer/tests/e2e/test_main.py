@@ -121,7 +121,11 @@ def test_outputs_wopn_percussion_in_midi_interface_code_format():
         ["python3", "-m", "deflemask_preset_viewer",
          SAMPLE_WOPN, "-c"]).decode()
 
-    assert 'static const Channel P_BANK_0_INST_0 = ' in stdout
+    assert 'static const PercussionPreset P_BANK_0_INST_30_CASTANETS = { { 4, 3, ' + \
+        '3, 0, 0, 0, 0, { { 9, 0, 31, 0, 11, 0, 15, 0, 15, 23, 0 }, ' + \
+        '{ 1, 0, 31, 0, 19, 0, 15, 0, 15, 15, 0 }, ' + \
+        '{ 4, 0, 31, 2, 20, 0, 15, 0, 15, 13, 0 }, ' + \
+        '{ 2, 0, 31, 2, 20, 0, 15, 0, 15, 13, 0 } } }, 62 };' in stdout
 
 
 def test_outputs_wopn_instrument_array_in_midi_interface_code_format():
