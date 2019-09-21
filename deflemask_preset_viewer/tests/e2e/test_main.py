@@ -116,6 +116,14 @@ def test_outputs_wopn_instruments_in_midi_interface_code_format():
     assert 'static const Channel M_BANK_1_INST_126 = ' in stdout
 
 
+def test_outputs_wopn_percussion_in_midi_interface_code_format():
+    stdout = subprocess.check_output(
+        ["python3", "-m", "deflemask_preset_viewer",
+         SAMPLE_WOPN, "-c"]).decode()
+
+    assert 'static const Channel P_BANK_0_INST_0 = ' in stdout
+
+
 def test_outputs_wopn_instrument_array_in_midi_interface_code_format():
     stdout = subprocess.check_output(
         ["python3", "-m", "deflemask_preset_viewer",
@@ -126,3 +134,13 @@ def test_outputs_wopn_instrument_array_in_midi_interface_code_format():
         "    &M_BANK_0_INST_1_BRIGHTPIANO,\n" + \
         "    &M_BANK_0_INST_2_ELECTRICPIANO_ANIMATICS,\n" in stdout
     assert "    &M_BANK_0_INST_127_GUNSHOT\n};\n" in stdout
+
+
+def test_outputs_wopn_percussion_array_in_midi_interface_code_format():
+    stdout = subprocess.check_output(
+        ["python3", "-m", "deflemask_preset_viewer",
+         SAMPLE_WOPN, "-c"]).decode()
+
+    assert "const Channel* const P_BANK_0[] = {\n" + \
+        "    &P_BANK_0_INST_0,\n" in stdout
+    assert "    &P_BANK_0_INST_127\n};\n" in stdout

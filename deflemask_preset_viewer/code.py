@@ -40,30 +40,36 @@ def print_preset(preset, name):
     print(code)
 
 
-def preset_name(bank_index, instrument_index, name):
+def preset_name(bank_index, instrument_index, name, prefix):
     if len(name) == 0:
-        return "M_BANK_{}_INST_{}".format(
-            bank_index, instrument_index)
+        return "{}_BANK_{}_INST_{}".format(
+            prefix, bank_index, instrument_index)
     else:
-        return "M_BANK_{}_INST_{}_{}".format(
-            bank_index, instrument_index, name)
+        return "{}_BANK_{}_INST_{}_{}".format(
+            prefix, bank_index, instrument_index, name)
 
 
 def print_wopn(wopn):
     for bank_index, bank in enumerate(wopn.m_banks):
-        for instrument_index, instrument in enumerate(bank.instruments):
-            print_preset(instrument, preset_name(
-                bank_index, instrument_index, instrument.name))
-            print('')
-        print("const Channel* const M_BANK_{}[] = {{".format(bank_index))
-        for instrument_index, instrument in enumerate(bank.instruments):
-            if instrument_index == 127:
-                print("    &{}".format(const_name(preset_name(
-                    bank_index, instrument_index, instrument.name))))
-            else:
-                print("    &{},".format(const_name(preset_name(
-                    bank_index, instrument_index, instrument.name))))
-        print("};\n")
+        print_wopn_bank(bank, bank_index, 'M')
+    for bank_index, bank in enumerate(wopn.p_banks):
+        print_wopn_bank(bank, bank_index, 'P')
+
+
+def print_wopn_bank(bank, bank_index, prefix):
+    for instrument_index, instrument in enumerate(bank.instruments):
+        print_preset(instrument, preset_name(
+            bank_index, instrument_index, instrument.name, prefix))
+        print('')
+    print("const Channel* const {}_BANK_{}[] = {{".format(prefix, bank_index))
+    for instrument_index, instrument in enumerate(bank.instruments):
+        if instrument_index == 127:
+            print("    &{}".format(const_name(preset_name(
+                bank_index, instrument_index, instrument.name, prefix))))
+        else:
+            print("    &{},".format(const_name(preset_name(
+                bank_index, instrument_index, instrument.name, prefix))))
+    print("};\n")
 
 
 def print_code(model):
