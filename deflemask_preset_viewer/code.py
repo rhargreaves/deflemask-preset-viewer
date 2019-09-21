@@ -68,21 +68,21 @@ def print_wopn(wopn):
 
 def print_wopn_bank(bank, bank_index, prefix):
     for instrument_index, instrument in enumerate(bank.instruments):
+        name = preset_name(
+            bank_index, instrument_index, instrument.name, prefix)
         if prefix == 'P':
-            print_percussion_preset(instrument, preset_name(
-                bank_index, instrument_index, instrument.name, prefix))
+            print_percussion_preset(instrument, name)
         else:
-            print_preset(instrument, preset_name(
-                bank_index, instrument_index, instrument.name, prefix))
+            print_preset(instrument, name)
         print('')
     print("const Channel* const {}_BANK_{}[] = {{".format(prefix, bank_index))
     for instrument_index, instrument in enumerate(bank.instruments):
+        name = preset_name(
+            bank_index, instrument_index, instrument.name, prefix)
         if instrument_index == 127:
-            print("    &{}".format(const_name(preset_name(
-                bank_index, instrument_index, instrument.name, prefix))))
+            print("    &{}".format(const_name(name)))
         else:
-            print("    &{},".format(const_name(preset_name(
-                bank_index, instrument_index, instrument.name, prefix))))
+            print("    &{},".format(const_name(name)))
     print("};\n")
 
 
