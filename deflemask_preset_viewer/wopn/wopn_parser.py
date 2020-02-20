@@ -30,7 +30,7 @@ def parse_wopn(filename):
 
 def read_instrument(f):
     name, key_offset, percussion_key, feedback, algorithm, lfo_ams, lfo_fms = unpack(
-        't248p8' + 'u16u8' + 'p2u3u3' + 'p2u3p1u2', f.read(37))
+        't248p8' + 'u16u8' + 'p2u3u3' + 'p2u2p1u3', f.read(37))
     instrument = WopnInstrument(name.rstrip('\0'), key_offset,
                                 percussion_key, feedback, algorithm, lfo_ams, lfo_fms)
     for _ in range(4):

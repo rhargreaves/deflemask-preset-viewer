@@ -96,6 +96,14 @@ def test_parses_instrument_fm_parameters():
     assert another_instrument.operators[0].rs == 1
 
 
+def test_parses_lfo_ams_instrument_fm_parameters():
+    wopn = parse_wopn(SAMPLE_WOPN)
+    instrument = wopn.m_banks[0].instruments[41]
+
+    assert instrument.lfo_ams == 2
+    assert instrument.lfo_fms == 3
+
+
 def test_parses_instruments_in_percussion_banks():
     wopn = parse_wopn(SAMPLE_WOPN)
 
