@@ -88,8 +88,8 @@ def op_values(name, values):
     return '{0:<11}{1:<8}{2:<8}{3:<8}{4:<8}\n'.format(
         name,
         values[0],
-        values[1],
         values[2],
+        values[1],
         values[3])
 
 
@@ -101,8 +101,8 @@ def test_outputs_in_midi_interface_code_format():
     assert stdout == 'static const Channel SAMPLE = ' + \
         '{ 3, 0, 3, 0, 0, 0, 0, { ' + \
         '{ 14, 3, 31, 2, 15, 0, 14, 0, 15, 39, 0 }, ' + \
-        '{ 1, 3, 31, 0, 14, 0, 14, 0, 15, 24, 0 }, ' + \
         '{ 0, 3, 31, 0, 9, 0, 14, 0, 15, 24, 0 }, ' + \
+        '{ 1, 3, 31, 0, 14, 0, 14, 0, 15, 24, 0 }, ' + \
         '{ 0, 3, 31, 0, 9, 0, 14, 0, 15, 19, 0 } } };\n'
 
 
@@ -123,8 +123,8 @@ def test_outputs_wopn_percussion_in_midi_interface_code_format():
 
     assert 'static const PercussionPreset P_BANK_0_INST_30_CASTANETS = { { 4, 3, ' + \
         '3, 0, 0, 0, 0, { { 9, 0, 31, 0, 11, 0, 15, 0, 15, 23, 0 }, ' + \
-        '{ 1, 0, 31, 0, 19, 0, 15, 0, 15, 15, 0 }, ' + \
         '{ 4, 0, 31, 2, 20, 0, 15, 0, 15, 13, 0 }, ' + \
+        '{ 1, 0, 31, 0, 19, 0, 15, 0, 15, 15, 0 }, ' + \
         '{ 2, 0, 31, 2, 20, 0, 15, 0, 15, 13, 0 } } }, 62 };' in stdout
 
 

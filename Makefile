@@ -2,7 +2,7 @@ PYTHONPATH := $(PWD)
 
 all: test
 
-test:
+test: build
 	python3 -m pytest -vv
 .PHONY: test
 
