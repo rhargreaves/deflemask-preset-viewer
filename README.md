@@ -4,7 +4,7 @@ Reads Deflemask preset files (DMP) and displays the stored parameters. Also supp
 
 ## Supported Formats
 
-- DefleMask preset versions 8 and 11
+- DefleMask preset versions 8, 9 and 11
 - WOPN versions 1 and 2
 
 ## Installation

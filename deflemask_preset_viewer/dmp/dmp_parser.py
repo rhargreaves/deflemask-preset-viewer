@@ -15,7 +15,7 @@ def extract_name(path):
 def parse_dmp(filename):
     with open(filename, "rb") as f:
         version = read_byte(f)
-        if version == 8:
+        if version == 8 or version == 9:
             instrument_mode = read_byte(f)
             system_type = None
             read_byte(f)  # unknown
