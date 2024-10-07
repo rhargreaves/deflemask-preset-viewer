@@ -2,3 +2,4 @@ pytest
 autopep8
 bitstruct
 setuptools
+twine
