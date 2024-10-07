@@ -107,7 +107,7 @@ SSG        0       0       0       0
 
 It can also generate C code for inclusion in the [Mega Drive MIDI Interface](https://github.com/rhargreaves/mega-drive-midi-interface) project. Specify `-c` to output parameters in this way:
 
-#### DMP files
+#### DMP & TFI files
 
 ```sh
 $ deflemask-preset-viewer deflemask_preset_viewer/tests/data/sample.dmp -c
