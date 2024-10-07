@@ -1,0 +1,43 @@
+name: Build and Release
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: Install Dependencies
+        run: |
+          echo 'export PATH="$HOME/.local/bin:$PATH"' >> $GITHUB_ENV
+          source $GITHUB_ENV
+          make build
+      - name: Run Tests
+        run: |
+          make test
+
+  publish:
+    needs: [build]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: Run Dist
+        run: |
+          make dist
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@v1.9.1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
