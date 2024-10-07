@@ -85,8 +85,8 @@ Feedback   7       LFO AMS  0
 
 ```sh
 $ deflemask-preset-viewer deflemask_preset_viewer/tests/data/sample.tfi
-Algorithm  4       LFO FMS  None
-Feedback   7       LFO AMS  None
+Algorithm  4       LFO FMS  0
+Feedback   7       LFO AMS  0
 ------------------------------------------------------------
 Parameter  Op 1    Op 2    Op 3    Op 4
 ------------------------------------------------------------
