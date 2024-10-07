@@ -33,8 +33,8 @@ def parse_dmp(filename):
             for _ in range(4):
                 ops.append(parse_operator(f))
             dmp.operators.append(ops[0])
-            dmp.operators.append(ops[1])
             dmp.operators.append(ops[2])
+            dmp.operators.append(ops[1])
             dmp.operators.append(ops[3])
         return dmp
 
