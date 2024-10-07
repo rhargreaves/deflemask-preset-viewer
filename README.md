@@ -1,4 +1,4 @@
-# DefleMask Preset Viewer [![CircleCI](https://circleci.com/gh/rhargreaves/deflemask-preset-viewer.svg?style=svg)](https://circleci.com/gh/rhargreaves/deflemask-preset-viewer) [![PyPI version](https://badge.fury.io/py/deflemask-preset-viewer.svg)](https://badge.fury.io/py/deflemask-preset-viewer)
+# DefleMask Preset Viewer [![Build and Release](https://github.com/rhargreaves/deflemask-preset-viewer/actions/workflows/build.yml/badge.svg)](https://github.com/rhargreaves/deflemask-preset-viewer/actions/workflows/build.yml) [![PyPI version](https://badge.fury.io/py/deflemask-preset-viewer.svg)](https://badge.fury.io/py/deflemask-preset-viewer)
 
 Reads Deflemask preset files (DMP) and displays the stored parameters. Also supports dumping of bank and instrument data of [WOPN files](https://github.com/Wohlstand/libOPNMIDI/blob/master/fm_banks/wopn%20specification.txt) as used by [libOPNMIDI](https://github.com/Wohlstand/libOPNMIDI)
 
