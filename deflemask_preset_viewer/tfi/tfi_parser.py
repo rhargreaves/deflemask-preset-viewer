@@ -1,15 +1,7 @@
 from .tfi import Tfi
 from ..fm_operator import FmOperator
 from bitstruct import unpack_dict
-import os
-
-
-def read_byte(file):
-    return file.read(1)[0]
-
-
-def extract_name(path):
-    return os.path.splitext(os.path.basename(path))[0]
+from ..util import extract_name, read_byte
 
 
 def parse_tfi(filename):
