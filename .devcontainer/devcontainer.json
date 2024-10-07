@@ -1,0 +1,16 @@
+{
+    "name": "deflemask-preset-viewer",
+    "image": "mcr.microsoft.com/vscode/devcontainers/python:3.12-bullseye",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-vscode.hexeditor",
+                "EditorConfig.EditorConfig"
+            ]
+        }
+    },
+    "postCreateCommand": {
+        "git": "git config --global --add safe.directory /workspaces/deflemask-preset-viewer"
+    }
+}
