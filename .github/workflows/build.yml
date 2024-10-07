@@ -25,6 +25,8 @@ jobs:
 
   publish:
     needs: [build]
+    permissions:
+      id-token: write
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
