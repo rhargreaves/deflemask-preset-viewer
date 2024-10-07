@@ -15,6 +15,7 @@ run:
 .PHONY: run
 
 clean:
+	find . -name \*.pyc -delete
 	rm -rf dist
 .PHONY: clean
 

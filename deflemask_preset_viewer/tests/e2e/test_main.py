@@ -1,6 +1,6 @@
 import subprocess
 import pytest
-from ..data.files import SAMPLE_WOPN, SAMPLE_DMP, SAMPLE_NEW_DMP, SAMPLE_V9_DMP
+from ..data.files import SAMPLE_WOPN, SAMPLE_DMP, SAMPLE_NEW_DMP, SAMPLE_V9_DMP, SAMPLE_TFI
 
 
 def test_returns_help_page():
@@ -36,6 +36,28 @@ def test_returns_details_for_version_9_dmp():
 
     assert 'FM' in stdout
     assert 'Version    9' in stdout
+    assert 'Algorithm  4' in stdout
+    assert 'Feedback   7' in stdout
+    assert 'LFO FMS  0' in stdout
+    assert 'LFO AMS  0' in stdout
+    assert op_values('MUL', [2, 1, 2, 1]) in stdout
+    assert op_values('TL', [33, 15, 33, 15]) in stdout
+    assert op_values('AR', [31, 31, 31, 31]) in stdout
+    assert op_values('D1R', [0, 0, 0, 0]) in stdout
+    assert op_values('D1L', [0, 0, 0, 0]) in stdout
+    assert op_values('RR', [15, 15, 15, 15]) in stdout
+    assert op_values('AM', [0, 0, 0, 0]) in stdout
+    assert op_values('RS', [0, 0, 0, 0]) in stdout
+    assert op_values('DT1', [6, 6, 0, 0]) in stdout
+    assert op_values('D2R', [0, 0, 0, 0]) in stdout
+    assert op_values('SSG', [0, 0, 0, 0]) in stdout
+
+
+def test_returns_details_for_tfi():
+    stdout = subprocess.check_output(
+        ["python3", "-m", "deflemask_preset_viewer",
+         SAMPLE_TFI]).decode()
+
     assert 'Algorithm  4' in stdout
     assert 'Feedback   7' in stdout
     assert 'LFO FMS  0' in stdout
@@ -128,6 +150,19 @@ def test_outputs_in_midi_interface_code_format():
         '{ 1, 3, 31, 0, 14, 0, 14, 0, 15, 24, 0 }, ' + \
         '{ 0, 3, 31, 0, 9, 0, 14, 0, 15, 24, 0 }, ' + \
         '{ 0, 3, 31, 0, 9, 0, 14, 0, 15, 19, 0 } } };\n'
+
+
+def test_outputs_tfi_in_midi_interface_code_format():
+    stdout = subprocess.check_output(
+        ["python3", "-m", "deflemask_preset_viewer",
+         SAMPLE_TFI, "-c"]).decode()
+
+    assert stdout == 'static const Channel SAMPLE = ' + \
+        '{ 4, 7, 3, 0, 0, 0, 0, { ' + \
+        '{ 2, 6, 31, 0, 0, 0, 0, 0, 15, 33, 0 }, ' + \
+        '{ 1, 6, 31, 0, 0, 0, 0, 0, 15, 15, 0 }, ' + \
+        '{ 2, 0, 31, 0, 0, 0, 0, 0, 15, 33, 0 }, ' + \
+        '{ 1, 0, 31, 0, 0, 0, 0, 0, 15, 15, 0 } } };\n'
 
 
 def test_outputs_wopn_instruments_in_midi_interface_code_format():

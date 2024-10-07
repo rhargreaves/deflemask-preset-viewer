@@ -1,11 +1,12 @@
 # DefleMask Preset Viewer [![Build and Release](https://github.com/rhargreaves/deflemask-preset-viewer/actions/workflows/build.yml/badge.svg)](https://github.com/rhargreaves/deflemask-preset-viewer/actions/workflows/build.yml) [![PyPI version](https://badge.fury.io/py/deflemask-preset-viewer.svg)](https://badge.fury.io/py/deflemask-preset-viewer)
 
-Reads Deflemask preset files (DMP) and displays the stored parameters. Also supports dumping of bank and instrument data of [WOPN files](https://github.com/Wohlstand/libOPNMIDI/blob/master/fm_banks/wopn%20specification.txt) as used by [libOPNMIDI](https://github.com/Wohlstand/libOPNMIDI)
+Reads VGM preset files (including DefleMask, WOPN & TFI) and displays the stored parameters.
 
 ## Supported Formats
 
 - DefleMask preset versions 8, 9 and 11
-- WOPN versions 1 and 2
+- [WOPN](https://github.com/Wohlstand/libOPNMIDI/blob/master/fm_banks/wopn%20specification.txt) versions 1 and 2, as used by libOPNMIDI
+- [TFI](https://vgmrips.net/wiki/TFI_File_Format)
 
 ## Installation
 
@@ -78,6 +79,28 @@ Algorithm  5       LFO FMS  0
 Feedback   7       LFO AMS  0
 ------------------------------------------------------------
 ...
+```
+
+#### TFI files
+
+```sh
+$ deflemask-preset-viewer deflemask_preset_viewer/tests/data/sample.tfi
+Algorithm  4       LFO FMS  None
+Feedback   7       LFO AMS  None
+------------------------------------------------------------
+Parameter  Op 1    Op 2    Op 3    Op 4
+------------------------------------------------------------
+MUL        2       1       2       1
+TL         33      15      33      15
+AR         31      31      31      31
+D1R        0       0       0       0
+D1L        0       0       0       0
+RR         15      15      15      15
+AM         0       0       0       0
+RS         0       0       0       0
+DT1        6       6       0       0
+D2R        0       0       0       0
+SSG        0       0       0       0
 ```
 
 ### Output as C Code
