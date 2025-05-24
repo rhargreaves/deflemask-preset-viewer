@@ -1,12 +1,11 @@
-name: Build
+name: Publish
 on:
-  push:
-    branches:
-      - master
   workflow_dispatch:
 
 jobs:
-  build:
+  publish:
+    permissions:
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -23,3 +22,10 @@ jobs:
       - name: Run Tests
         run: |
           make test
+      - name: Run Dist
+        run: |
+          make dist
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}

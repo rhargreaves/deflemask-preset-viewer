@@ -18,9 +18,15 @@ setup(
         "console_scripts": ['deflemask-preset-viewer = deflemask_preset_viewer.main:main']
     },
     classifiers=[
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.12",
         "Topic :: Multimedia :: Sound/Audio",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent"
-    ]
+    ],
+    python_requires=">=3.12",
+    install_requires=[],
+    project_urls={
+        "Bug Tracker": "https://github.com/rhargreaves/deflemask-preset-viewer/issues",
+        "Source Code": "https://github.com/rhargreaves/deflemask-preset-viewer"
+    }
 )
