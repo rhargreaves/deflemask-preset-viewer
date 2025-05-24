@@ -7,7 +7,7 @@ test: build
 .PHONY: test
 
 build:
-	pip3 install --user -r requirements.txt
+	pip3 install -r requirements.txt
 .PHONY: build
 
 run:
@@ -33,3 +33,7 @@ upload: dist
 		--repository-url https://test.pypi.org/legacy/ \
 		dist/*
 .PHONY: upload
+
+create-mdmi-bank:
+	python3 -m deflemask_preset_viewer ../libOPNMIDI/fm_banks/xg.wopn -c > mdmi_presets.h
+.PHONY: create-mdmi-bank

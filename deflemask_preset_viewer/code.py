@@ -4,19 +4,15 @@ from .preset import Preset
 
 
 def const_name(name):
-    return re.sub("[^\w\s]", "", name).upper().replace(' ', '_').replace('__', '_')
+    return re.sub("[^\\w\\s]", "", name).upper().replace(' ', '_').replace('__', '_')
 
 
 def channel_code(preset):
-    STEREO_L_R = 3
-    code = "{{ {alg}, {fb}, {stereo}, {ams}, {fms}, {octave}, {freq}, {{ ".format(
+    code = "{{ {alg}, {fb}, {ams}, {fms}, {{ ".format(
         alg=preset.algorithm,
         fb=preset.feedback,
-        stereo=STEREO_L_R,
         ams=preset.lfo_ams,
         fms=preset.lfo_fms,
-        octave=0,
-        freq=0
     )
     for i, op in enumerate(preset.operators):
         opDef = "{{ {mul}, {detune}, {ar}, {rs}, {dr}, {am}, {sa}, {d2r}, {rr}, {tl}, {ssg} }}".format(
@@ -39,7 +35,7 @@ def channel_code(preset):
 
 
 def print_preset(preset, name):
-    code = "static const Channel {} = {};".format(
+    code = "static const FmPreset {} = {};".format(
         const_name(name), channel_code(preset))
     print(code)
 
@@ -75,7 +71,7 @@ def print_wopn_bank(bank, bank_index, prefix):
         else:
             print_preset(instrument, name)
         print('')
-    print("const Channel* const {}_BANK_{}[] = {{".format(prefix, bank_index))
+    print("const FmPreset* const {}_BANK_{}[] = {{".format(prefix, bank_index))
     for instrument_index, instrument in enumerate(bank.instruments):
         name = preset_name(
             bank_index, instrument_index, instrument.name, prefix)
